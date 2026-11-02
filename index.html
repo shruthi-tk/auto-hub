@@ -1,0 +1,2777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trust Automation & SRE Knowledge Hub</title>
+    <!-- Tailwind CSS 3.4.17 -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <!-- Chart.js 4.4.1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        trust: {
+                            purple: '#2D1A47',
+                            dark: '#1B0E2E',
+                            deep: '#24133B',
+                            vibrant: '#582672',
+                            accent: '#6E2D8E',
+                            teal: '#00828A',
+                            tealdark: '#00656B',
+                            teallight: '#E6F4F5',
+                            lavender: '#F5F1FA',
+                            cardbg: '#FAF8FC',
+                            border: '#E3DCED',
+                            muted: '#655F73',
+                            success: '#0E7A4A',
+                            danger: '#A61B29',
+                            warning: '#B86A00'
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #F8F7FB;
+            color: #1F1B29;
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #F0EDF5;
+            border-radius: 4px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #C9C2D6;
+            border-radius: 4px;
+        }
+
+        .badge-idea {
+            background-color: #EDE7F6;
+            color: #582672;
+            border: 1px solid #D7C7EB;
+        }
+
+        .badge-approved {
+            background-color: #E6F4F5;
+            color: #00656B;
+            border: 1px solid #B8E4E7;
+        }
+
+        .badge-dev {
+            background-color: #FFF4E5;
+            color: #B86A00;
+            border: 1px solid #FFE0B2;
+        }
+
+        .badge-prod {
+            background-color: #E8F5E9;
+            color: #1B5E20;
+            border: 1px solid #C8E6C9;
+        }
+
+        .badge-rejected {
+            background-color: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #FFCDD2;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- TOP HEADER / BRAND NAVIGATION -->
+    <header class="bg-trust-purple text-white shadow-md border-b border-trust-vibrant sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand & Title -->
+                <div class="flex items-center space-x-3">
+                    <!-- trust Dual 'T' Monogram Motif -->
+                    <div
+                        class="w-10 h-10 rounded-lg bg-trust-teal flex items-center justify-center font-bold text-white text-xl shadow-inner tracking-tighter">
+                        <span class="inline-block transform -translate-x-0.5">T</span><span
+                            class="inline-block transform translate-x-0.5 text-trust-dark">T</span>
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span
+                                class="text-xs uppercase tracking-widest font-semibold text-trust-teallight opacity-90">Enterprise
+                                SRE & Production Support</span>
+                            <span
+                                class="bg-trust-teal text-white text-[10px] font-bold px-1.5 py-0.5 rounded">v2.4</span>
+                        </div>
+                        <h1 class="text-lg font-bold text-white tracking-tight">trust Automation Hub</h1>
+                    </div>
+                </div>
+
+                <!-- Global Quick Actions -->
+                <div class="flex items-center space-x-3">
+                    <button id="btnOpenMigrationModal"
+                        class="inline-flex items-center px-3 py-1.5 border border-trust-teal text-xs font-semibold rounded-md text-white bg-trust-teal/20 hover:bg-trust-teal hover:text-white transition-colors duration-150 shadow-sm">
+                        <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                        </svg>
+                        Request Adoption / Migration
+                    </button>
+                    <button id="btnOpenNewIdeaModal"
+                        class="inline-flex items-center px-3.5 py-1.5 border border-transparent text-xs font-semibold rounded-md text-trust-dark bg-white hover:bg-trust-teallight transition-colors duration-150 shadow-sm">
+                        <svg class="w-3.5 h-3.5 mr-1.5 text-trust-teal" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Submit Toil / Idea
+                    </button>
+                </div>
+            </div>
+
+            <!-- MAIN TABS NAVIGATION -->
+            <nav class="flex space-x-1 sm:space-x-4 border-t border-trust-deep pt-1 overflow-x-auto custom-scroll"
+                aria-label="Tabs">
+                <button data-tab="tab-funnel"
+                    class="tab-btn active px-3 py-2 text-xs font-medium border-b-2 border-trust-teal text-white flex items-center space-x-1.5 whitespace-nowrap">
+                    <span>💡</span> <span>Idea Funnel & Pipeline</span>
+                    <span id="badgeActiveCount"
+                        class="ml-1 bg-trust-vibrant text-white text-[10px] px-1.5 py-0.2 rounded-full">12</span>
+                </button>
+                <button data-tab="tab-catalog"
+                    class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
+                    <span>📚</span> <span>Automation & Script Catalog</span>
+                    <span id="badgeCatalogCount"
+                        class="ml-1 bg-trust-teal text-white text-[10px] px-1.5 py-0.2 rounded-full">8</span>
+                </button>
+                <button data-tab="tab-crosspoll"
+                    class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
+                    <span>🔄</span> <span>Cross-Pollination Matrix</span>
+                    <span class="ml-1 bg-purple-800 text-purple-200 text-[10px] px-1.5 py-0.2 rounded-full">5
+                        Reused</span>
+                </button>
+                <button data-tab="tab-meetings"
+                    class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
+                    <span>📅</span> <span>Meeting Notes & Datewise Log</span>
+                </button>
+                <button data-tab="tab-report"
+                    class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
+                    <span>📊</span> <span>Annual ROI & Productivity Report</span>
+                </button>
+                <button data-tab="tab-org"
+                    class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
+                    <span>🏢</span> <span>Verticals & Horizontals</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- QUICK STATS BAR -->
+    <section class="bg-white border-b border-trust-border py-2.5 px-4 sm:px-6 lg:px-8 shadow-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 text-center text-xs">
+            <div class="bg-trust-lavender/60 p-2 rounded border border-trust-border/70">
+                <div class="text-trust-muted">Total Ideas Logged</div>
+                <div id="statTotalIdeas" class="text-base font-bold text-trust-purple">16</div>
+            </div>
+            <div class="bg-amber-50 p-2 rounded border border-amber-200">
+                <div class="text-amber-800">In Pipeline (Review/Dev)</div>
+                <div id="statInPipeline" class="text-base font-bold text-amber-700">6</div>
+            </div>
+            <div class="bg-emerald-50 p-2 rounded border border-emerald-200">
+                <div class="text-emerald-800">Active Automations</div>
+                <div id="statInProduction" class="text-base font-bold text-emerald-700">8</div>
+            </div>
+            <div class="bg-blue-50 p-2 rounded border border-blue-200">
+                <div class="text-blue-800">Cross-Pollinated Apps</div>
+                <div id="statCrossPollinated" class="text-base font-bold text-blue-700">5</div>
+            </div>
+            <div class="bg-purple-50 p-2 rounded border border-purple-200">
+                <div class="text-purple-800">Ann. Hours Saved</div>
+                <div id="statHoursSaved" class="text-base font-bold text-trust-purple">4,820 hrs</div>
+            </div>
+            <div class="bg-teal-50 p-2 rounded border border-teal-200">
+                <div class="text-teal-800">Cost Savings (Est.)</div>
+                <div id="statCostSavings" class="text-base font-bold text-trust-teal">$361,500</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex-1 w-full">
+
+        <!-- TAB 1: IDEA FUNNEL & PIPELINE -->
+        <section id="tab-funnel" class="tab-content block space-y-4">
+            <!-- Filter Toolbar -->
+            <div
+                class="bg-white p-3.5 rounded-lg border border-trust-border shadow-sm flex flex-wrap items-center justify-between gap-3">
+                <div class="flex flex-wrap items-center gap-2">
+                    <label class="text-xs font-semibold text-trust-purple">Filter By:</label>
+                    <select id="funnelFilterVertical"
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-trust-teal">
+                        <option value="ALL">All 4 Verticals</option>
+                        <option value="V1">Consumer & Small Business Banking</option>
+                        <option value="V2">Wholesale & Commercial Banking</option>
+                        <option value="V3">Wealth & Investment Management</option>
+                        <option value="V4">Enterprise Core Platforms & Payments</option>
+                    </select>
+                    <select id="funnelFilterHorizontal"
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-trust-teal">
+                        <option value="ALL">All Horizontals</option>
+                    </select>
+                    <select id="funnelFilterStatus"
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-trust-teal">
+                        <option value="ALL">All Statuses</option>
+                        <option value="Idea">1. Idea (Initial Toil Submission)</option>
+                        <option value="Approved">2. Approved & Queued</option>
+                        <option value="In Development">3. In Development</option>
+                        <option value="In Production">4. In Production (Catalog)</option>
+                        <option value="Rejected">5. Rejected</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <div class="relative">
+                        <input type="text" id="funnelSearch" placeholder="Search ideas, apps, tickets..."
+                            class="text-xs border border-trust-border rounded pl-7 pr-3 py-1.5 w-52 sm:w-64 focus:outline-none focus:ring-1 focus:ring-trust-teal" />
+                        <svg class="w-3.5 h-3.5 text-trust-muted absolute left-2 top-2" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <!-- View Toggle -->
+                    <div class="inline-flex rounded-md shadow-sm border border-trust-border bg-gray-50 p-0.5">
+                        <button id="btnViewBoard"
+                            class="px-2 py-1 text-xs rounded font-medium bg-trust-purple text-white shadow-xs">Board
+                            View</button>
+                        <button id="btnViewTable"
+                            class="px-2 py-1 text-xs rounded font-medium text-trust-muted hover:text-trust-purple">Table
+                            View</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KANBAN BOARD VIEW -->
+            <div id="boardViewContainer" class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
+                <!-- Col 1: Ideas -->
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
+                            <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider">1. Idea / Toil
+                            </h3>
+                        </div>
+                        <span id="count-Idea"
+                            class="text-[10px] bg-purple-100 text-purple-800 font-bold px-1.5 py-0.5 rounded-full">3</span>
+                    </div>
+                    <div id="column-Idea" class="space-y-2.5 flex-1 custom-scroll overflow-y-auto"></div>
+                </div>
+
+                <!-- Col 2: Approved -->
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-trust-teal"></span>
+                            <h3 class="text-xs font-bold text-trust-teal uppercase tracking-wider">2. Approved</h3>
+                        </div>
+                        <span id="count-Approved"
+                            class="text-[10px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded-full">2</span>
+                    </div>
+                    <div id="column-Approved" class="space-y-2.5 flex-1 custom-scroll overflow-y-auto"></div>
+                </div>
+
+                <!-- Col 3: In Development -->
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                            <h3 class="text-xs font-bold text-amber-700 uppercase tracking-wider">3. In Development</h3>
+                        </div>
+                        <span id="count-InDevelopment"
+                            class="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded-full">1</span>
+                    </div>
+                    <div id="column-InDevelopment" class="space-y-2.5 flex-1 custom-scroll overflow-y-auto"></div>
+                </div>
+
+                <!-- Col 4: In Production -->
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+                            <h3 class="text-xs font-bold text-emerald-800 uppercase tracking-wider">4. In Production
+                            </h3>
+                        </div>
+                        <span id="count-InProduction"
+                            class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded-full">8</span>
+                    </div>
+                    <div id="column-InProduction" class="space-y-2.5 flex-1 custom-scroll overflow-y-auto"></div>
+                </div>
+
+                <!-- Col 5: Rejected -->
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
+                        <div class="flex items-center space-x-1.5">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                            <h3 class="text-xs font-bold text-red-700 uppercase tracking-wider">5. Rejected</h3>
+                        </div>
+                        <span id="count-Rejected"
+                            class="text-[10px] bg-red-100 text-red-800 font-bold px-1.5 py-0.5 rounded-full">2</span>
+                    </div>
+                    <div id="column-Rejected" class="space-y-2.5 flex-1 custom-scroll overflow-y-auto"></div>
+                </div>
+            </div>
+
+            <!-- TABLE VIEW (Hidden by default) -->
+            <div id="tableViewContainer"
+                class="hidden bg-white rounded-lg border border-trust-border shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-trust-border text-xs">
+                        <thead class="bg-trust-lavender text-trust-purple font-semibold">
+                            <tr>
+                                <th class="px-3 py-2.5 text-left">ID & Title</th>
+                                <th class="px-3 py-2.5 text-left">Vertical / Horizontal</th>
+                                <th class="px-3 py-2.5 text-left">Target App</th>
+                                <th class="px-3 py-2.5 text-left">Status</th>
+                                <th class="px-3 py-2.5 text-left">Toil Hours</th>
+                                <th class="px-3 py-2.5 text-left">GitLab Repo</th>
+                                <th class="px-3 py-2.5 text-left">Latest Meeting Update</th>
+                                <th class="px-3 py-2.5 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="funnelTableBody" class="divide-y divide-gray-100">
+                            <!-- Dynamically rendered -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: AUTOMATION & SCRIPT CATALOG (KNOWLEDGE HUB) -->
+        <section id="tab-catalog" class="tab-content hidden space-y-4">
+            <div
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-sm font-bold text-trust-purple flex items-center">
+                        <span class="text-base mr-2">📚</span> Certified SRE Automations & Script Repository
+                    </h2>
+                    <p class="text-xs text-trust-muted">
+                        Knowledge base of vetted scripts, Ansible playbooks, and runbooks deployed in production. Each
+                        includes tested GitLab links and adoption guidelines.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <select id="catalogFilterTech"
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none">
+                        <option value="ALL">All Technologies (Ansible, Python, Bash, TF)</option>
+                        <option value="Ansible">Ansible Playbooks</option>
+                        <option value="Python">Python Scripts</option>
+                        <option value="Bash">Bash / Shell</option>
+                        <option value="Go">Go / Kubernetes Operator</option>
+                        <option value="Terraform">Terraform</option>
+                    </select>
+                    <input type="text" id="catalogSearch" placeholder="Search scripts or app..."
+                        class="text-xs border border-trust-border rounded px-3 py-1.5 w-48 sm:w-60 focus:outline-none" />
+                </div>
+            </div>
+
+            <!-- Catalog Cards Grid -->
+            <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Rendered via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 3: CROSS-POLLINATION (REUSABILITY & ADOPTION MATRIX) -->
+        <section id="tab-crosspoll" class="tab-content hidden space-y-4">
+            <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-base">🔄</span>
+                            <h2 class="text-sm font-bold text-trust-purple">Cross-Pollination & Script Reusability
+                                Matrix</h2>
+                            <span
+                                class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Multi-Tenant
+                                Blueprints</span>
+                        </div>
+                        <p class="text-xs text-trust-muted mt-1">
+                            Track automations originated in one vertical or horizontal that have been adapted or
+                            migrated across other teams. Eliminates duplicate toil and drives compounding ROI.
+                        </p>
+                    </div>
+                    <button id="btnOpenMigrationModalFromMatrix"
+                        class="inline-flex items-center px-3.5 py-2 text-xs font-semibold rounded-md text-white bg-trust-teal hover:bg-trust-tealdark shadow-sm">
+                        <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Request Script Adaptation for My Team
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cross-Pollination Visual Showcase -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                <!-- Left: Summary Stats & High-Reusability Champions -->
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm space-y-3">
+                    <h3
+                        class="text-xs font-bold text-trust-purple uppercase tracking-wider border-b border-trust-border pb-2">
+                        Reusability Impact Metrics
+                    </h3>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Original Scripts Reused:</span>
+                            <span class="font-bold text-trust-purple">5 scripts</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Total Multi-Team Adoptions:</span>
+                            <span class="font-bold text-trust-teal">14 instances</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Avoided Re-Development Time:</span>
+                            <span class="font-bold text-emerald-700">~620 dev hours</span>
+                        </div>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Multi-Tenant Reuse Ratio:</span>
+                            <span class="font-bold text-trust-purple">62.5%</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-trust-border">
+                        <h4 class="text-xs font-bold text-trust-purple mb-2">How Cross-Pollination Works:</h4>
+                        <ol class="text-[11px] text-trust-muted space-y-1.5 list-decimal list-inside">
+                            <li>An SRE builds a script for <span class="font-medium text-trust-purple">Horizontal
+                                    1</span>.</li>
+                            <li>Engineers in other verticals discover it in the catalog.</li>
+                            <li>They submit a <span class="font-medium text-trust-teal">"Migration & Adoption
+                                    Request"</span>.</li>
+                            <li>A new linked card enters the Idea Funnel as an approved derivative backlog item.</li>
+                            <li>Variables & secrets are parametrized for the new target app.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Right: Adoption Matrix Table -->
+                <div class="lg:col-span-2 bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider mb-3">
+                        Cross-Vertical Adoption Map
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full text-xs divide-y divide-trust-border">
+                            <thead class="bg-trust-lavender text-trust-purple font-semibold">
+                                <tr>
+                                    <th class="px-3 py-2 text-left">Automation Script</th>
+                                    <th class="px-3 py-2 text-left">Origin Team (Vertical / Horiz)</th>
+                                    <th class="px-3 py-2 text-left">Adopted Across (Horizontal Targets)</th>
+                                    <th class="px-3 py-2 text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="crossPollTableBody" class="divide-y divide-gray-100">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: DATEWISE MEETING NOTES & DECISION LOG -->
+        <section id="tab-meetings" class="tab-content hidden space-y-4">
+            <div
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-sm font-bold text-trust-purple flex items-center">
+                        <span class="text-base mr-2">📅</span> Datewise SRE Automation Review Notes & Decisions
+                    </h2>
+                    <p class="text-xs text-trust-muted">
+                        Chronological audit trail of all architectural reviews, status updates, approvals, rejections,
+                        and roadblock dissolutions discussed during automation syncs.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <select id="meetingFilterIdea"
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none">
+                        <option value="ALL">All Ideas & Topics</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Chronological Timeline Stream -->
+            <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                <div id="timelineContainer"
+                    class="space-y-4 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-trust-border before:z-0">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: ANNUAL ROI & PRODUCTIVITY REPORT -->
+        <section id="tab-report" class="tab-content hidden space-y-4">
+            <!-- Report Header & Controls -->
+            <div
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-base">📊</span>
+                        <h2 class="text-sm font-bold text-trust-purple">Annual SRE Productivity & Toil Reduction Report
+                        </h2>
+                        <span
+                            class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Executive
+                            Audit</span>
+                    </div>
+                    <p class="text-xs text-trust-muted mt-1">
+                        Quantified productivity improvements, engineer hours liberated from toil, MTTR impact, and cost
+                        avoidance by vertical and individual application.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <label class="text-xs font-semibold text-trust-purple">Fiscal Year:</label>
+                    <select id="reportYearSelect"
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none">
+                        <option value="2026">FY 2026 (YTD)</option>
+                        <option value="2025">FY 2025 (Full Year)</option>
+                    </select>
+                    <button id="btnExportCSV"
+                        class="inline-flex items-center px-3 py-1.5 border border-trust-teal text-xs font-semibold rounded text-trust-teal bg-white hover:bg-trust-teallight">
+                        <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Export CSV
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPI Executive Summary Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-trust-purple to-trust-dark text-white p-4 rounded-lg shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-trust-teallight font-medium">Total
+                        Engineering Hours Saved</div>
+                    <div class="text-2xl font-bold mt-1" id="reportMetricHours">4,820 hrs</div>
+                    <div class="text-[10px] text-gray-300 mt-1 flex items-center">
+                        <span class="text-emerald-400 font-bold mr-1">↑ +38%</span> vs previous fiscal year
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-trust-teal to-trust-tealdark text-white p-4 rounded-lg shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-teal-100 font-medium">Estimated Financial Cost
+                        Avoidance</div>
+                    <div class="text-2xl font-bold mt-1" id="reportMetricCost">$361,500</div>
+                    <div class="text-[10px] text-teal-100 mt-1">
+                        Calculated at standard $75/hr SRE engineering rate
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-trust-muted font-medium">Production
+                        Automations Active</div>
+                    <div class="text-2xl font-bold text-trust-purple mt-1" id="reportMetricActiveCount">8 Scripts</div>
+                    <div class="text-[10px] text-trust-muted mt-1">
+                        Across 14 discrete banking applications
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-trust-muted font-medium">Average MTTR
+                        Improvement</div>
+                    <div class="text-2xl font-bold text-emerald-700 mt-1">-54 mins</div>
+                    <div class="text-[10px] text-emerald-600 mt-1 font-semibold">
+                        68% reduction in manual incident diagnosis
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <!-- Chart 1: Hours Saved by Vertical & App -->
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider mb-2">
+                        Hours Saved by Vertical (Monthly vs Cumulative)
+                    </h3>
+                    <div class="relative h-72">
+                        <canvas id="chartVerticalHours"></canvas>
+                    </div>
+                </div>
+
+                <!-- Chart 2: Toil Breakdown by Technology Stack -->
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider mb-2">
+                        Automation Tech Stack Distribution
+                    </h3>
+                    <div class="relative h-72">
+                        <canvas id="chartTechDistribution"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- App-by-App Productivity Breakdown Table -->
+            <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider">
+                        Detailed Application-Level Productivity Scorecard
+                    </h3>
+                    <span class="text-[11px] text-trust-muted">Sorted by highest hours saved</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-xs divide-y divide-trust-border">
+                        <thead class="bg-trust-lavender text-trust-purple font-semibold">
+                            <tr>
+                                <th class="px-3 py-2 text-left">Application Name</th>
+                                <th class="px-3 py-2 text-left">Vertical & Horizontal</th>
+                                <th class="px-3 py-2 text-left">Automation Title</th>
+                                <th class="px-3 py-2 text-left">Stack / Git Repo</th>
+                                <th class="px-3 py-2 text-right">Hrs Saved / Mo</th>
+                                <th class="px-3 py-2 text-right">Annual Hours Saved</th>
+                                <th class="px-3 py-2 text-right">Annual Cost Saved</th>
+                                <th class="px-3 py-2 text-center">Reusability</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportTableBody" class="divide-y divide-gray-100">
+                            <!-- Dynamically populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 6: VERTICALS & HORIZONTALS MANAGEMENT -->
+        <section id="tab-org" class="tab-content hidden space-y-4">
+            <div
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-sm font-bold text-trust-purple flex items-center">
+                        <span class="text-base mr-2">🏢</span> Enterprise Organizational Matrix (Verticals &
+                        Horizontals)
+                    </h2>
+                    <p class="text-xs text-trust-muted">
+                        Configured structure supporting 4 core verticals with expandable horizontal queues. New
+                        verticals or horizontal queues can be registered as the org scales.
+                    </p>
+                </div>
+                <button id="btnAddVerticalModal"
+                    class="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded text-white bg-trust-purple hover:bg-trust-dark">
+                    + Add New Vertical / Horizontal
+                </button>
+            </div>
+
+            <!-- Verticals Cards Grid -->
+            <div id="orgHierarchyGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Populated via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-trust-dark text-gray-400 text-xs py-4 border-t border-trust-vibrant mt-auto">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div class="flex items-center space-x-2">
+                <span
+                    class="w-4 h-4 rounded bg-trust-teal text-white flex items-center justify-center font-bold text-[9px]">T</span>
+                <span class="text-gray-300 font-semibold">trust Financial Technology & Operations</span>
+                <span class="text-gray-500">| SRE & Production Engineering Practice</span>
+            </div>
+            <div>
+                Designed for Reliability, Security, and Cross-Team Knowledge Capital.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS ==================== -->
+
+    <!-- MODAL 1: SUBMIT NEW TOIL / AUTOMATION IDEA -->
+    <div id="modalNewIdea" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
+        <div
+            class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scroll border border-trust-border">
+            <div class="bg-trust-purple text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg">💡</span>
+                    <div>
+                        <h3 class="text-sm font-bold">Submit New SRE Toil / Automation Idea</h3>
+                        <p class="text-[11px] text-trust-teallight">Enter your manual pain point or proposed automation
+                            into the funnel</p>
+                    </div>
+                </div>
+                <button id="btnCloseNewIdeaModal"
+                    class="text-gray-300 hover:text-white text-lg font-bold">&times;</button>
+            </div>
+
+            <form id="formNewIdea" class="p-5 space-y-3.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-trust-purple mb-1">Idea / Automation Title *</label>
+                    <input type="text" id="newIdeaTitle" required
+                        placeholder="e.g. Automated Kafka Consumer Lag Remediation & Rebalancing"
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Submitter Name & Role *</label>
+                        <input type="text" id="newIdeaSubmitter" required placeholder="e.g. Marcus Vance (Staff SRE)"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Submitter Email *</label>
+                        <input type="email" id="newIdeaEmail" required placeholder="marcus.vance@trust.com"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Target Vertical *</label>
+                        <select id="newIdeaVertical" required
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                            <option value="">Select Vertical...</option>
+                            <option value="V1">Consumer & Small Business Banking</option>
+                            <option value="V2">Wholesale & Commercial Banking</option>
+                            <option value="V3">Wealth & Investment Management</option>
+                            <option value="V4">Enterprise Core Platforms & Payments</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Target Horizontal Queue *</label>
+                        <select id="newIdeaHorizontal" required
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                            <option value="">Select Horizontal...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Target Application(s) *</label>
+                        <input type="text" id="newIdeaApp" required
+                            placeholder="e.g. Digital Banking Gateway / Payments API"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Proposed Tech Stack *</label>
+                        <select id="newIdeaTech" required
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                            <option value="Ansible">Ansible Playbook</option>
+                            <option value="Python">Python Script / Daemon</option>
+                            <option value="Bash">Bash / Shell Script</option>
+                            <option value="Go">Go / Kubernetes Operator</option>
+                            <option value="Terraform">Terraform Module</option>
+                            <option value="PowerShell">PowerShell</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Current Manual Toil (Hours/Month)
+                            *</label>
+                        <input type="number" id="newIdeaToilHours" required min="1" max="1000" placeholder="e.g. 24"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                        <span class="text-[10px] text-trust-muted">Monthly engineer hours spent running manual
+                            runbook</span>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Execution Frequency</label>
+                        <select id="newIdeaFreq"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                            <option value="Daily automated cron">Daily automated cron</option>
+                            <option value="Weekly maintenance window">Weekly maintenance window</option>
+                            <option value="On-demand incident response">On-demand incident response</option>
+                            <option value="Continuous event-driven daemon">Continuous event-driven daemon</option>
+                            <option value="Monthly reconciliation">Monthly reconciliation</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-trust-purple mb-1">Problem / Manual Toil Description
+                        *</label>
+                    <textarea id="newIdeaDesc" rows="3" required
+                        placeholder="Describe the manual pain point, incident alerts, or repetitive commands currently executed..."
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-trust-purple mb-1">GitLab Repository URL (Optional at Idea
+                        phase)</label>
+                    <input type="url" id="newIdeaGitLab"
+                        placeholder="https://gitlab.corp.trust.com/sre-automations/kafka-lag-rebalancer"
+                        class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                </div>
+
+                <div
+                    class="bg-trust-lavender p-3 rounded-lg border border-trust-border/70 flex items-start space-x-2">
+                    <input type="checkbox" id="newIdeaCrossPollCheck"
+                        class="mt-0.5 rounded text-trust-teal focus:ring-trust-teal" />
+                    <label for="newIdeaCrossPollCheck" class="text-[11px] text-trust-purple">
+                        <span class="font-bold">Potential for Cross-Pollination?</span> Check this if this script can be
+                        parametrized and reused across other horizontals or banking apps in the bank.
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-trust-border">
+                    <button type="button" id="btnCancelNewIdea"
+                        class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50 font-medium">Cancel</button>
+                    <button type="submit"
+                        class="px-4 py-2 bg-trust-teal text-white rounded font-bold hover:bg-trust-tealdark shadow-sm">Submit
+                        to Idea Funnel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: REQUEST ADOPTION / MIGRATION OF EXISTING SCRIPT -->
+    <div id="modalMigration" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
+        <div
+            class="bg-white rounded-xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto custom-scroll border border-trust-border">
+            <div class="bg-trust-teal text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl">
+                <div class="flex items-center space-x-2">
+                    <span class="text-lg">🔄</span>
+                    <div>
+                        <h3 class="text-sm font-bold">Request Script Adoption / Cross-Pollination</h3>
+                        <p class="text-[11px] text-teal-100">Configure a battle-tested automation for your team's
+                            application</p>
+                    </div>
+                </div>
+                <button id="btnCloseMigrationModal"
+                    class="text-gray-300 hover:text-white text-lg font-bold">&times;</button>
+            </div>
+
+            <form id="formMigration" class="p-5 space-y-3.5 text-xs">
+                <div>
+                    <label class="block font-semibold text-trust-purple mb-1">Select Existing Automation from Catalog
+                        *</label>
+                    <select id="migSourceScript" required
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                        <!-- Populated with production scripts -->
+                    </select>
+                </div>
+
+                <div class="p-2.5 bg-gray-50 rounded border border-trust-border text-[11px] text-trust-muted"
+                    id="migSourceDetails">
+                    <!-- Shows selected script's origin and GitLab link -->
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Requesting Vertical *</label>
+                        <select id="migTargetVertical" required
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                            <option value="">Select Vertical...</option>
+                            <option value="V1">Consumer & Small Business Banking</option>
+                            <option value="V2">Wholesale & Commercial Banking</option>
+                            <option value="V3">Wealth & Investment Management</option>
+                            <option value="V4">Enterprise Core Platforms & Payments</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Requesting Horizontal Queue *</label>
+                        <select id="migTargetHorizontal" required
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
+                            <option value="">Select Horizontal...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Your Target Application *</label>
+                        <input type="text" id="migTargetApp" required placeholder="e.g. Commercial Loan Approval Portal"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-trust-purple mb-1">Requestor Name & Role *</label>
+                        <input type="text" id="migRequestor" required placeholder="e.g. Priya Sharma (Lead Support Eng)"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-trust-purple mb-1">Toil Hours Spent on Your App
+                        (Hours/Month) *</label>
+                    <input type="number" id="migToilHours" required min="1" placeholder="e.g. 18"
+                        class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-trust-purple mb-1">Configuration / Migration
+                        Specifics</label>
+                    <textarea id="migNotes" rows="3"
+                        placeholder="Specify any unique environment variables, host groups, credentials (CyberArk vault), or schema differences needed..."
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none"></textarea>
+                </div>
+
+                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-trust-border">
+                    <button type="button" id="btnCancelMigration"
+                        class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50 font-medium">Cancel</button>
+                    <button type="submit"
+                        class="px-4 py-2 bg-trust-teal text-white rounded font-bold hover:bg-trust-tealdark shadow-sm">Submit
+                        Adoption Ticket</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 3: IDEA DETAILS, STATUS WORKFLOW, & DATEWISE MEETING NOTES -->
+    <div id="modalIdeaDetail" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
+        <div
+            class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[92vh] overflow-y-auto custom-scroll border border-trust-border">
+            <!-- Modal Header -->
+            <div
+                class="bg-trust-purple text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl sticky top-0 z-10">
+                <div class="flex items-center space-x-2">
+                    <span id="detailBadgeStatus"
+                        class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Status</span>
+                    <h3 id="detailTitle" class="text-sm font-bold truncate max-w-lg">Idea Title</h3>
+                </div>
+                <button id="btnCloseIdeaDetailModal"
+                    class="text-gray-300 hover:text-white text-lg font-bold">&times;</button>
+            </div>
+
+            <div class="p-5 space-y-4 text-xs">
+                <!-- Top Metadata Grid -->
+                <div
+                    class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 bg-trust-lavender/50 rounded-lg border border-trust-border">
+                    <div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Vertical / Team</div>
+                        <div id="detailVertical" class="font-semibold text-trust-purple mt-0.5">-</div>
+                    </div>
+                    <div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Horizontal Queue</div>
+                        <div id="detailHorizontal" class="font-semibold text-trust-purple mt-0.5">-</div>
+                    </div>
+                    <div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Target Application</div>
+                        <div id="detailApp" class="font-semibold text-trust-teal mt-0.5">-</div>
+                    </div>
+                    <div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Monthly Toil</div>
+                        <div id="detailToilHours" class="font-bold text-amber-700 mt-0.5">-</div>
+                    </div>
+                </div>
+
+                <!-- Description & Git Repo Section -->
+                <div class="space-y-2">
+                    <div>
+                        <h4 class="font-bold text-trust-purple">Problem Statement & Toil Context</h4>
+                        <p id="detailDesc"
+                            class="text-gray-700 bg-gray-50 p-2.5 rounded border border-gray-200 mt-1 leading-relaxed">-
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                        <div>
+                            <label class="block font-bold text-trust-purple mb-0.5">GitLab Repository Link</label>
+                            <div class="flex items-center space-x-1.5">
+                                <input type="text" id="detailGitLabInput"
+                                    class="w-full border border-trust-border rounded px-2.5 py-1 text-xs focus:ring-1 focus:ring-trust-teal" />
+                                <a id="detailGitLabLink" href="#" target="_blank"
+                                    class="px-2 py-1 bg-trust-purple text-white rounded text-xs font-semibold hover:bg-trust-vibrant flex items-center whitespace-nowrap">
+                                    <span>Open ↗</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block font-bold text-trust-purple mb-0.5">Ansible / Playbook Tag or
+                                Path</label>
+                            <input type="text" id="detailPlaybookTag" placeholder="e.g. playbooks/rebalance_kafka.yml"
+                                class="w-full border border-trust-border rounded px-2.5 py-1 text-xs focus:ring-1 focus:ring-trust-teal" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LIFECYCLE PHASE & REJECTION CONTROLS -->
+                <div class="p-3 bg-gray-50 rounded-lg border border-trust-border space-y-2">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <label class="font-bold text-trust-purple">Update Lifecycle Phase:</label>
+                            <p class="text-[10px] text-trust-muted">Advance idea from initial toil submission to
+                                approval, dev, or production</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <select id="detailStatusSelect"
+                                class="border border-trust-border rounded px-2.5 py-1 font-semibold text-xs focus:ring-1 focus:ring-trust-teal">
+                                <option value="Idea">1. Idea (Initial Toil Submission)</option>
+                                <option value="Approved">2. Approved & Queued</option>
+                                <option value="In Development">3. In Development</option>
+                                <option value="In Production">4. In Production (Catalog)</option>
+                                <option value="Rejected">5. Rejected</option>
+                            </select>
+                            <button id="btnSaveStatusChange"
+                                class="px-3 py-1 bg-trust-teal text-white rounded font-bold hover:bg-trust-tealdark text-xs">
+                                Save Phase
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Rejection Reason box (visible only when rejected) -->
+                    <div id="rejectionReasonBox" class="hidden pt-2 border-t border-gray-200">
+                        <label class="block font-bold text-red-700 mb-0.5">Rejection Justification *</label>
+                        <input type="text" id="detailRejectionReason"
+                            placeholder="State reason: e.g. Deprecated legacy app, Vendor roadmap overlap, Insufficient ROI (<5 hrs/mo)"
+                            class="w-full border border-red-300 rounded px-2.5 py-1 text-xs bg-red-50 focus:ring-1 focus:ring-red-500" />
+                    </div>
+                </div>
+
+                <!-- CROSS-POLLINATION / ADOPTION HISTORY -->
+                <div class="p-3 bg-purple-50/70 rounded-lg border border-purple-200 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-trust-purple flex items-center">
+                            <span class="mr-1.5">🔄</span> Cross-Pollination & Adoptions for this Script
+                        </h4>
+                        <button id="btnTriggerMigrationFromDetail"
+                            class="text-[11px] text-trust-teal font-bold hover:underline">
+                            + Request Migration for another App
+                        </button>
+                    </div>
+                    <div id="detailCrossPollList" class="text-xs text-gray-700">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+                <!-- DATEWISE MEETING NOTES & UPDATES -->
+                <div class="space-y-3 pt-2">
+                    <div class="flex items-center justify-between border-b border-trust-border pb-1.5">
+                        <div>
+                            <h4 class="font-bold text-trust-purple flex items-center">
+                                <span class="mr-1.5">📝</span> Datewise Meeting Notes & Architectural Reviews
+                            </h4>
+                            <p class="text-[10px] text-trust-muted">All discussions from weekly SRE automation review
+                                meetings</p>
+                        </div>
+                    </div>
+
+                    <!-- Meeting Notes List -->
+                    <div id="detailMeetingNotesList" class="space-y-2.5 max-h-60 overflow-y-auto custom-scroll pr-1">
+                        <!-- Populated via JS -->
+                    </div>
+
+                    <!-- Inline Form to Add New Meeting Note -->
+                    <div class="bg-trust-lavender/60 p-3 rounded-lg border border-trust-border space-y-2">
+                        <h5 class="font-bold text-trust-purple text-xs flex items-center">
+                            <span>+ Record New Meeting Note / Review Update</span>
+                        </h5>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <div>
+                                <label class="block text-[10px] font-semibold text-trust-muted mb-0.5">Meeting Date
+                                    *</label>
+                                <input type="date" id="newNoteDate"
+                                    class="w-full border border-trust-border rounded px-2 py-1 text-xs" />
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-semibold text-trust-muted mb-0.5">Reviewer /
+                                    Meeting Chair *</label>
+                                <input type="text" id="newNoteAuthor" placeholder="e.g. SRE Architecture Guild"
+                                    class="w-full border border-trust-border rounded px-2 py-1 text-xs" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-semibold text-trust-muted mb-0.5">Discussion Notes &
+                                Decisions *</label>
+                            <textarea id="newNoteText" rows="2"
+                                placeholder="Record feedback, approval rationale, blocker resolutions, or next steps agreed during meeting..."
+                                class="w-full border border-trust-border rounded px-2.5 py-1.5 text-xs focus:ring-1 focus:ring-trust-teal"></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" id="btnAddMeetingNote"
+                                class="px-3 py-1 bg-trust-purple text-white rounded font-bold hover:bg-trust-dark text-xs shadow-xs">
+                                Log Meeting Note
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toastNotification"
+        class="fixed bottom-4 right-4 bg-trust-purple text-white px-4 py-2.5 rounded-lg shadow-xl text-xs flex items-center space-x-2 transform translate-y-20 transition-all duration-300 z-50 border border-trust-teal">
+        <span id="toastIcon">✓</span>
+        <span id="toastMessage">Action completed successfully</span>
+    </div>
+
+    <!-- ==================== APPLICATION SCRIPT ==================== -->
+    <script>
+        // --- 1. DATA STRUCTURES & STATE ---
+
+        // 4 Verticals & their Horizontals
+        const ORG_HIERARCHY = {
+            V1: {
+                id: "V1",
+                name: "Consumer & Small Business Banking",
+                code: "CSBB",
+                lead: "Elena Rostova (VP SRE)",
+                horizontals: [
+                    { id: "H1_1", name: "Digital Channels & Mobile Banking", lead: "Dave Miller" },
+                    { id: "H1_2", name: "Branch & ATM Core Systems", lead: "Anand Patel" },
+                    { id: "H1_3", name: "Consumer Lending & Mortgages", lead: "Sarah Jenkins" },
+                    { id: "H1_4", name: "Credit Card & Card Processing", lead: "Kenji Sato" }
+                ]
+            },
+            V2: {
+                id: "V2",
+                name: "Wholesale & Commercial Banking",
+                code: "WCB",
+                lead: "Marcus Thorne (Head of Prod Support)",
+                horizontals: [
+                    { id: "H2_1", name: "Treasury Solutions & Cash Flow", lead: "Rachel Adams" },
+                    { id: "H2_2", name: "Commercial Lending & Syndication", lead: "Carlos Gomez" },
+                    { id: "H2_3", name: "Global Trade & Foreign Exchange", lead: "Deepak Mehta" }
+                ]
+            },
+            V3: {
+                id: "V3",
+                name: "Wealth & Investment Management",
+                code: "WIM",
+                lead: "Patricia Clark (Director Reliability)",
+                horizontals: [
+                    { id: "H3_1", name: "Portfolio & Advisory Systems", lead: "Liam O'Connor" },
+                    { id: "H3_2", name: "Brokerage Trading Execution", lead: "Wei Zhang" },
+                    { id: "H3_3", name: "Trust & Estate Management", lead: "Hannah Bailey" }
+                ]
+            },
+            V4: {
+                id: "V4",
+                name: "Enterprise Core Platforms & Payments",
+                code: "ECPP",
+                lead: "Jamal Washington (Distinguished SRE)",
+                horizontals: [
+                    { id: "H4_1", name: "Real-Time Payments & FedNow Gateway", lead: "Vikram Sen" },
+                    { id: "H4_2", name: "Enterprise Mainframe & Core Ledger API", lead: "Robert Vance" },
+                    { id: "H4_3", name: "Identity, IAM & Security Services", lead: "Chloe Martin" },
+                    { id: "H4_4", name: "Cloud Infrastructure & Observability", lead: "Siddharth Rao" }
+                ]
+            }
+        };
+
+        // Ideas & Automations Data Store
+        let automations = [
+            {
+                id: "AUTO-101",
+                title: "SSL/TLS Certificate Auto-Rotator & Vault Sync",
+                submitter: "David Chen (Staff SRE)",
+                submitterEmail: "david.chen@trust.com",
+                verticalId: "V4",
+                horizontalId: "H4_3",
+                app: "Enterprise API Gateway (Apigee)",
+                tech: "Ansible",
+                playbookTag: "playbooks/pki/cert_rotate_gateway.yml",
+                gitlabUrl: "https://gitlab.corp.trust.com/sre-core/ansible-pki-rotator",
+                status: "In Production",
+                toilHoursMonth: 35,
+                freq: "Continuous event-driven daemon",
+                desc: "Automates 90-day TLS certificate renewal from DigiCert via Venafi into CyberArk & HashiCorp Vault, auto-reloading HAProxy & Apigee gateways with zero drop in traffic.",
+                rejectionReason: "",
+                crossPollinationCount: 4,
+                adoptions: [
+                    { verticalId: "V1", horizontalId: "H1_1", app: "Digital Banking Mobile Backend", date: "2026-03-12" },
+                    { verticalId: "V2", horizontalId: "H2_1", app: "Treasury Gateway Services", date: "2026-05-18" },
+                    { verticalId: "V3", horizontalId: "H3_2", app: "Brokerage Order Router", date: "2026-07-22" },
+                    { verticalId: "V4", horizontalId: "H4_1", app: "FedNow Settlement Engine", date: "2026-09-05" }
+                ],
+                meetingNotes: [
+                    { date: "2026-01-14", author: "Core SRE Review Board", text: "Idea reviewed. Unanimous approval given high risk of manual cert expiry outages. Team authorized to pilot in Non-Prod." },
+                    { date: "2026-02-18", author: "CyberArk Security Guild", text: "Approved API token rotation model. Validated hash generation meets banking cryptographic compliance standards." },
+                    { date: "2026-03-05", author: "Production Change Advisory", text: "Greenlit for production deployment. SRE documentation verified in Confluence and GitLab wiki." }
+                ]
+            },
+            {
+                id: "AUTO-102",
+                title: "Kafka Consumer Lag Self-Healing & Partition Rebalancer",
+                submitter: "Marcus Vance (SRE Lead)",
+                submitterEmail: "marcus.vance@trust.com",
+                verticalId: "V1",
+                horizontalId: "H1_1",
+                app: "Digital Banking Event Bus",
+                tech: "Python",
+                playbookTag: "scripts/kafka/rebalance_monitor.py",
+                gitlabUrl: "https://gitlab.corp.trust.com/digital-banking/kafka-lag-healer",
+                status: "In Production",
+                toilHoursMonth: 48,
+                freq: "Continuous event-driven daemon",
+                desc: "Monitors Prometheus Kafka consumer lag metrics; automatically triggers pod horizontal autoscaling and triggers targeted partition reassignment whenever threshold > 5,000 msgs.",
+                rejectionReason: "",
+                crossPollinationCount: 3,
+                adoptions: [
+                    { verticalId: "V2", horizontalId: "H2_2", app: "Commercial Loan Pipeline", date: "2026-04-10" },
+                    { verticalId: "V4", horizontalId: "H4_1", app: "Real-Time Payment Ingestion", date: "2026-06-15" },
+                    { verticalId: "V3", horizontalId: "H3_1", app: "Portfolio Advisory Stream", date: "2026-08-30" }
+                ],
+                meetingNotes: [
+                    { date: "2026-02-02", author: "Architecture Council", text: "Approved proposal. Solves recurring Monday morning consumer group rebalance storm." },
+                    { date: "2026-03-15", author: "SRE Bi-Weekly Review", text: "Pilot demonstrated zero incident tickets during peak payroll Friday load." }
+                ]
+            },
+            {
+                id: "AUTO-103",
+                title: "Oracle Tablespace Auto-Extender & Partition Pruner",
+                submitter: "Sanjay Gupta (Database SRE)",
+                submitterEmail: "sanjay.gupta@trust.com",
+                verticalId: "V2",
+                horizontalId: "H2_1",
+                app: "Wholesale Treasury Ledger DB",
+                tech: "Ansible",
+                playbookTag: "playbooks/dba/oracle_tablespace_guard.yml",
+                gitlabUrl: "https://gitlab.corp.trust.com/db-sre/oracle-tablespace-ansible",
+                status: "In Production",
+                toilHoursMonth: 28,
+                freq: "Daily automated cron",
+                desc: "Checks tablespace utilization daily; executes pre-authorized datafile auto-extension up to predefined caps and alerts on storage volume exhaustion.",
+                rejectionReason: "",
+                crossPollinationCount: 2,
+                adoptions: [
+                    { verticalId: "V1", horizontalId: "H1_3", app: "Consumer Mortgage Data Warehouse", date: "2026-05-20" },
+                    { verticalId: "V4", horizontalId: "H4_2", app: "Core Mainframe Staging Store", date: "2026-07-11" }
+                ],
+                meetingNotes: [
+                    { date: "2026-01-20", author: "DBA Review Panel", text: "Approved with condition that storage cap never exceeds 85% of SAN LUN." },
+                    { date: "2026-04-02", author: "Change Review Board", text: "Successfully rolled out to production wholesale ledger databases." }
+                ]
+            },
+            {
+                id: "AUTO-104",
+                title: "Kubernetes Pod OOMKilled Self-Healing & Memory Scaler",
+                submitter: "Chloe Martin (Cloud Reliability Eng)",
+                submitterEmail: "chloe.martin@trust.com",
+                verticalId: "V4",
+                horizontalId: "H4_4",
+                app: "Enterprise OpenShift / EKS Clusters",
+                tech: "Go",
+                playbookTag: "k8s-operators/memory-guardian-v1.yaml",
+                gitlabUrl: "https://gitlab.corp.trust.com/cloud-platform/memory-guardian-operator",
+                status: "In Production",
+                toilHoursMonth: 60,
+                freq: "Continuous event-driven daemon",
+                desc: "Kubernetes custom controller detecting crashlooping pods from OOMKill (Exit code 137). Dynamically adjusts memory limits within predetermined pod budgets and takes JVM heap dump to S3.",
+                rejectionReason: "",
+                crossPollinationCount: 3,
+                adoptions: [
+                    { verticalId: "V1", horizontalId: "H1_1", app: "Digital Banking Microservices", date: "2026-04-18" },
+                    { verticalId: "V2", horizontalId: "H2_3", app: "FX Trading APIs", date: "2026-06-25" },
+                    { verticalId: "V3", horizontalId: "H3_2", app: "Brokerage Webhook Receivers", date: "2026-08-14" }
+                ],
+                meetingNotes: [
+                    { date: "2026-02-10", author: "Platform SRE Guild", text: "Endorsed custom operator approach. Replaced 15 manual runbook pages for nighttime on-call team." },
+                    { date: "2026-03-29", author: "SRE Architecture Review", text: "Production release approved across all 18 enterprise OpenShift clusters." }
+                ]
+            },
+            {
+                id: "AUTO-105",
+                title: "Nightly Batch Job Stuck Thread Dump Collector",
+                submitter: "Vikram Sen (Lead Prod Support)",
+                submitterEmail: "vikram.sen@trust.com",
+                verticalId: "V4",
+                horizontalId: "H4_2",
+                app: "Core Mainframe Settlement Bridge",
+                tech: "Bash",
+                playbookTag: "scripts/batch/thread_dump_collector.sh",
+                gitlabUrl: "https://gitlab.corp.trust.com/batch-support/thread-dump-extractor",
+                status: "In Production",
+                toilHoursMonth: 22,
+                freq: "Daily automated cron",
+                desc: "Captures 3 consecutive thread dumps spaced 10 seconds apart whenever batch processing jobs stall beyond SLA limits, formatting stack traces for instant JIRA attachment.",
+                rejectionReason: "",
+                crossPollinationCount: 1,
+                adoptions: [
+                    { verticalId: "V1", horizontalId: "H1_2", app: "ATM Batch Reconciliation Engine", date: "2026-09-10" }
+                ],
+                meetingNotes: [
+                    { date: "2026-03-01", author: "Mainframe Support Sync", text: "Approved. Eliminates midnight SSH sessions to production servers." }
+                ]
+            },
+            {
+                id: "AUTO-106",
+                title: "Disaster Recovery Failover DNS & GSLB Automation",
+                submitter: "Rachel Adams (Sr Staff SRE)",
+                submitterEmail: "rachel.adams@trust.com",
+                verticalId: "V2",
+                horizontalId: "H2_1",
+                app: "Commercial Cash Flow Management",
+                tech: "Ansible",
+                playbookTag: "playbooks/dr/f5_gslb_switchover.yml",
+                gitlabUrl: "https://gitlab.corp.trust.com/net-sre/f5-gslb-dr-ansible",
+                status: "In Production",
+                toilHoursMonth: 16,
+                freq: "On-demand incident response",
+                desc: "Executes F5 BIG-IP GSLB pool switching between Charlotte and Atlanta primary/secondary data centers during disaster recovery drills and emergency circuit outages.",
+                rejectionReason: "",
+                crossPollinationCount: 1,
+                adoptions: [
+                    { verticalId: "V3", horizontalId: "H3_1", app: "Wealth Advisory Portal", date: "2026-08-01" }
+                ],
+                meetingNotes: [
+                    { date: "2026-04-12", author: "BCP & Resiliency Committee", text: "Approved after successful dry-run in staging DC." }
+                ]
+            },
+            {
+                id: "AUTO-107",
+                title: "Synthetic API Health & Token Refresh Canary",
+                submitter: "Kenji Sato (SRE)",
+                submitterEmail: "kenji.sato@trust.com",
+                verticalId: "V1",
+                horizontalId: "H1_4",
+                app: "Credit Card Authorization Gateway",
+                tech: "Python",
+                playbookTag: "canaries/card_auth_probe.py",
+                gitlabUrl: "https://gitlab.corp.trust.com/card-sre/card-auth-canary",
+                status: "In Production",
+                toilHoursMonth: 30,
+                freq: "Continuous event-driven daemon",
+                desc: "Runs synthetic authorization transaction probes every 30 seconds, testing OAuth2 token refresh and detecting latency spikes before cardholder transactions fail.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-05-04", author: "Payments Reliability Team", text: "Passed QA and security signoff. Live in production." }
+                ]
+            },
+            {
+                id: "AUTO-108",
+                title: "Log Ingestion Spike Throttler & Index Optimizer",
+                submitter: "Siddharth Rao (Observability Eng)",
+                submitterEmail: "siddharth.rao@trust.com",
+                verticalId: "V4",
+                horizontalId: "H4_4",
+                app: "Enterprise Splunk & Elasticsearch Cluster",
+                tech: "Python",
+                playbookTag: "scripts/splunk/spike_throttle.py",
+                gitlabUrl: "https://gitlab.corp.trust.com/observability/splunk-spike-controller",
+                status: "In Production",
+                toilHoursMonth: 40,
+                freq: "Continuous event-driven daemon",
+                desc: "Identifies runaway debug log levels causing Splunk license saturation. Dynamically throttles loggers and notifies developer team channels.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-06-11", author: "Enterprise Tooling Guild", text: "Approved. Prevents $150K Splunk overage penalties." }
+                ]
+            },
+            // PIPELINE IDEAS
+            {
+                id: "AUTO-109",
+                title: "Automated Blue-Green Database Schema Migrations",
+                submitter: "Elena Rostova (VP SRE)",
+                submitterEmail: "elena.rostova@trust.com",
+                verticalId: "V1",
+                horizontalId: "H1_1",
+                app: "Digital Banking Core Database",
+                tech: "Ansible",
+                playbookTag: "playbooks/db/liquidbase_bluegreen.yml",
+                gitlabUrl: "https://gitlab.corp.trust.com/digital-banking/db-bluegreen-migrator",
+                status: "In Development",
+                toilHoursMonth: 36,
+                freq: "Weekly maintenance window",
+                desc: "Runs Liquibase schema changes in parallel read-replica databases with zero lock contention during bi-weekly sprint releases.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-08-15", author: "SRE Architecture Review", text: "Approved with strict rollback verification playbook required." },
+                    { date: "2026-09-22", author: "Sprint 42 Status Check", text: "Core Ansible playbook drafted. Integration testing in Stage environment underway." }
+                ]
+            },
+            {
+                id: "AUTO-110",
+                title: "IAM Role Drift Remediation & Permission Pruner",
+                submitter: "Priya Sharma (Cloud Security SRE)",
+                submitterEmail: "priya.sharma@trust.com",
+                verticalId: "V4",
+                horizontalId: "H4_3",
+                app: "AWS & Azure Multi-Cloud Landing Zone",
+                tech: "Terraform",
+                playbookTag: "modules/iam_drift/remediate.tf",
+                gitlabUrl: "https://gitlab.corp.trust.com/cloud-sec/iam-drift-corrector",
+                status: "Approved",
+                toilHoursMonth: 25,
+                freq: "Daily automated cron",
+                desc: "Detects unauthorized IAM policy mutations outside CI/CD Terraform state and resets policies to certified baseline configurations.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-09-02", author: "CISO Architecture Forum", text: "Idea reviewed and approved. Priority 1 for SOC2 and OCC audit compliance." },
+                    { date: "2026-10-10", author: "SRE Sprint Planning", text: "Assigned to Sprint 44 backlog for developer allocation." }
+                ]
+            },
+            {
+                id: "AUTO-111",
+                title: "Automated MQ Channel Deadlock Clearer",
+                submitter: "Robert Vance (Systems Eng)",
+                submitterEmail: "robert.vance@trust.com",
+                verticalId: "V4",
+                horizontalId: "H4_2",
+                app: "IBM MQ Mainframe Message Queue",
+                tech: "Bash",
+                playbookTag: "scripts/mq/resolve_channel_hang.sh",
+                gitlabUrl: "https://gitlab.corp.trust.com/core-banking/mq-hang-cleaner",
+                status: "Approved",
+                toilHoursMonth: 18,
+                freq: "On-demand incident response",
+                desc: "Detects hung transmitter channels on IBM MQ queue managers, flushes poisoned uncommitted message headers, and restarts channel cleanly.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-09-18", author: "Mainframe SRE Sync", text: "Approved. Eliminates 2 hours of manual mainframe operator intervention per incident." }
+                ]
+            },
+            {
+                id: "AUTO-112",
+                title: "Wealth Portfolio Calculation Cache Auto-Warm Daemon",
+                submitter: "Liam O'Connor (Wealth SRE)",
+                submitterEmail: "liam.oconnor@trust.com",
+                verticalId: "V3",
+                horizontalId: "H3_1",
+                app: "Wealth Advisory Portfolio Calculation Engine",
+                tech: "Python",
+                playbookTag: "",
+                gitlabUrl: "",
+                status: "Idea",
+                toilHoursMonth: 15,
+                freq: "Daily automated cron",
+                desc: "Nightly pre-warming of Redis cache for top 50,000 active portfolios prior to NYSE market open at 9:30 AM EST to prevent morning CPU spikes.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-10-14", author: "Wealth Tech Triage", text: "Idea logged. Scheduled for architecture review on next Thursday's docket." }
+                ]
+            },
+            {
+                id: "AUTO-113",
+                title: "Automated Commercial Loan Document OCR Queue Flusher",
+                submitter: "Carlos Gomez (Prod Support Lead)",
+                submitterEmail: "carlos.gomez@trust.com",
+                verticalId: "V2",
+                horizontalId: "H2_2",
+                app: "Commercial Underwriting Document Ingestion",
+                tech: "Python",
+                playbookTag: "",
+                gitlabUrl: "",
+                status: "Idea",
+                toilHoursMonth: 20,
+                freq: "Daily automated cron",
+                desc: "Detects malformed PDF uploads that hang the OCR processing workers, moves corrupted files to quarantine S3 bucket, and sends automated alert to loan officer.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-10-20", author: "Commercial Support Sync", text: "New idea submitted. High impact on end-of-month commercial closing SLAs." }
+                ]
+            },
+            {
+                id: "AUTO-114",
+                title: "Branch Teller Terminal Health Auto-Rebooter",
+                submitter: "Anand Patel (Branch Tech Eng)",
+                submitterEmail: "anand.patel@trust.com",
+                verticalId: "V1",
+                horizontalId: "H1_2",
+                app: "Branch Teller Workstation Software",
+                tech: "PowerShell",
+                playbookTag: "",
+                gitlabUrl: "",
+                status: "Idea",
+                toilHoursMonth: 28,
+                freq: "Weekly maintenance window",
+                desc: "PowerShell automation across 2,000 branch workstations to clean local cache, rotate logs, and restart teller peripherals at 6:00 AM before branch opening.",
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-10-25", author: "Branch Ops Committee", text: "Idea captured from branch help desk ticket analysis." }
+                ]
+            },
+            // REJECTED IDEAS (Demonstrating requirement)
+            {
+                id: "AUTO-115",
+                title: "Legacy Windows Server 2012 Auto-Patcher",
+                submitter: "Johnathan Miller (Sysadmin)",
+                submitterEmail: "j.miller@trust.com",
+                verticalId: "V2",
+                horizontalId: "H2_3",
+                app: "Legacy FX Settlement Server",
+                tech: "PowerShell",
+                playbookTag: "",
+                gitlabUrl: "https://gitlab.corp.trust.com/legacy-ops/patch-win2012",
+                status: "Rejected",
+                toilHoursMonth: 12,
+                freq: "Monthly maintenance window",
+                desc: "Script to automatically pull and push cumulative security patches to 14 legacy Windows 2012 servers hosting foreign exchange legacy calculations.",
+                rejectionReason: "REJECTED: Application is officially slated for decommission in Q1 2027. Investing SRE automation resources into an end-of-life OS conflicts with the Enterprise Cloud Modernization Policy.",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-04-18", author: "Enterprise Architecture Review Board", text: "Reviewed proposal. Decided to REJECT. Spending SRE engineering effort on legacy OS due to be decommissioned in 4 months is negative ROI. Risk must be addressed by accelerating server retirement." }
+                ]
+            },
+            {
+                id: "AUTO-116",
+                title: "Automated Slack-to-Email Incident Notifier",
+                submitter: "Sarah Jenkins (Support Analyst)",
+                submitterEmail: "sarah.jenkins@trust.com",
+                verticalId: "V1",
+                horizontalId: "H1_3",
+                app: "Mortgage Incident Channel",
+                tech: "Python",
+                playbookTag: "",
+                gitlabUrl: "",
+                status: "Rejected",
+                toilHoursMonth: 8,
+                freq: "On-demand incident response",
+                desc: "Custom webhook script scraping Slack messages in #mortgage-incidents and emailing PDF summaries to business directors.",
+                rejectionReason: "REJECTED: Enterprise Incident Management policy mandates all major incident comms must flow through ServiceNow PagerDuty integration to preserve audited chain of custody.",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    { date: "2026-06-08", author: "Major Incident Management (MIM) Guild", text: "REJECTED. Bypassing ServiceNow audited incident records violates OCC compliance standards. Requested team use standard ServiceNow notifications instead." }
+                ]
+            }
+        ];
+
+        let currentEditingIdeaId = null;
+        let chartVerticalHoursInstance = null;
+        let chartTechDistributionInstance = null;
+
+        // --- 2. INITIALIZATION & DOM BINDINGS ---
+        document.addEventListener("DOMContentLoaded", function () {
+            renderAllTabs();
+            setupEventListeners();
+            populateDropdowns();
+            initCharts();
+        });
+
+        function setupEventListeners() {
+            // Tab navigation
+            document.querySelectorAll(".tab-btn").forEach(btn => {
+                btn.addEventListener("click", function () {
+                    const targetTabId = this.getAttribute("data-tab");
+                    switchTab(targetTabId);
+                });
+            });
+
+            // View toggle (Board vs Table)
+            document.getElementById("btnViewBoard").addEventListener("click", function () {
+                document.getElementById("boardViewContainer").classList.remove("hidden");
+                document.getElementById("tableViewContainer").classList.add("hidden");
+                this.className = "px-2 py-1 text-xs rounded font-medium bg-trust-purple text-white shadow-xs";
+                document.getElementById("btnViewTable").className = "px-2 py-1 text-xs rounded font-medium text-trust-muted hover:text-trust-purple";
+            });
+
+            document.getElementById("btnViewTable").addEventListener("click", function () {
+                document.getElementById("boardViewContainer").classList.add("hidden");
+                document.getElementById("tableViewContainer").classList.remove("hidden");
+                this.className = "px-2 py-1 text-xs rounded font-medium bg-trust-purple text-white shadow-xs";
+                document.getElementById("btnViewBoard").className = "px-2 py-1 text-xs rounded font-medium text-trust-muted hover:text-trust-purple";
+                renderFunnelTable();
+            });
+
+            // Filter events
+            document.getElementById("funnelFilterVertical").addEventListener("change", function () {
+                updateHorizontalFilter(this.value);
+                renderFunnelBoard();
+                renderFunnelTable();
+            });
+            document.getElementById("funnelFilterHorizontal").addEventListener("change", function () {
+                renderFunnelBoard();
+                renderFunnelTable();
+            });
+            document.getElementById("funnelFilterStatus").addEventListener("change", function () {
+                renderFunnelBoard();
+                renderFunnelTable();
+            });
+            document.getElementById("funnelSearch").addEventListener("input", function () {
+                renderFunnelBoard();
+                renderFunnelTable();
+            });
+
+            // Catalog filters
+            document.getElementById("catalogFilterTech").addEventListener("change", renderCatalog);
+            document.getElementById("catalogSearch").addEventListener("input", renderCatalog);
+
+            // Meeting log filter
+            document.getElementById("meetingFilterIdea").addEventListener("change", renderMeetingLog);
+
+            // Report year change
+            document.getElementById("reportYearSelect").addEventListener("change", function () {
+                renderReport();
+                updateCharts();
+            });
+
+            // Modals
+            document.getElementById("btnOpenNewIdeaModal").addEventListener("click", () => openModal("modalNewIdea"));
+            document.getElementById("btnCloseNewIdeaModal").addEventListener("click", () => closeModal("modalNewIdea"));
+            document.getElementById("btnCancelNewIdea").addEventListener("click", () => closeModal("modalNewIdea"));
+
+            document.getElementById("btnOpenMigrationModal").addEventListener("click", () => openMigrationModal());
+            document.getElementById("btnOpenMigrationModalFromMatrix").addEventListener("click", () => openMigrationModal());
+            document.getElementById("btnCloseMigrationModal").addEventListener("click", () => closeModal("modalMigration"));
+            document.getElementById("btnCancelMigration").addEventListener("click", () => closeModal("modalMigration"));
+
+            document.getElementById("btnCloseIdeaDetailModal").addEventListener("click", () => closeModal("modalIdeaDetail"));
+
+            // Submissions
+            document.getElementById("formNewIdea").addEventListener("submit", handleNewIdeaSubmit);
+            document.getElementById("formMigration").addEventListener("submit", handleMigrationSubmit);
+            document.getElementById("newIdeaVertical").addEventListener("change", function () {
+                populateHorizontalDropdown("newIdeaHorizontal", this.value);
+            });
+            document.getElementById("migTargetVertical").addEventListener("change", function () {
+                populateHorizontalDropdown("migTargetHorizontal", this.value);
+            });
+
+            // Modal Idea Detail Status update
+            document.getElementById("btnSaveStatusChange").addEventListener("click", saveIdeaStatusChange);
+            document.getElementById("detailStatusSelect").addEventListener("change", function () {
+                const rejBox = document.getElementById("rejectionReasonBox");
+                if (this.value === "Rejected") {
+                    rejBox.classList.remove("hidden");
+                } else {
+                    rejBox.classList.add("hidden");
+                }
+            });
+
+            // Add meeting note
+            document.getElementById("btnAddMeetingNote").addEventListener("click", handleAddMeetingNote);
+
+            // Cross-pollination trigger from detail modal
+            document.getElementById("btnTriggerMigrationFromDetail").addEventListener("click", function () {
+                if (currentEditingIdeaId) {
+                    closeModal("modalIdeaDetail");
+                    openMigrationModal(currentEditingIdeaId);
+                }
+            });
+
+            // Export CSV
+            document.getElementById("btnExportCSV").addEventListener("click", exportReportCSV);
+
+            // Organization hierarchy modal
+            document.getElementById("btnAddVerticalModal").addEventListener("click", function () {
+                showToast("Organizational schema modification request logged for Enterprise Architecture Administrator.", "🏢");
+            });
+        }
+
+        // --- 3. TAB NAVIGATION ---
+        function switchTab(tabId) {
+            document.querySelectorAll(".tab-btn").forEach(btn => {
+                if (btn.getAttribute("data-tab") === tabId) {
+                    btn.className = "tab-btn active px-3 py-2 text-xs font-medium border-b-2 border-trust-teal text-white flex items-center space-x-1.5 whitespace-nowrap";
+                } else {
+                    btn.className = "tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap";
+                }
+            });
+
+            document.querySelectorAll(".tab-content").forEach(content => {
+                content.classList.add("hidden");
+                content.classList.remove("block");
+            });
+
+            const activeContent = document.getElementById(tabId);
+            if (activeContent) {
+                activeContent.classList.remove("hidden");
+                activeContent.classList.add("block");
+            }
+
+            // Refresh specific tab contents
+            if (tabId === "tab-report") {
+                setTimeout(initCharts, 50);
+            }
+        }
+
+        // --- 4. RENDERERS ---
+        function renderAllTabs() {
+            updateSummaryMetrics();
+            renderFunnelBoard();
+            renderFunnelTable();
+            renderCatalog();
+            renderCrossPollinationMatrix();
+            renderMeetingLog();
+            renderReport();
+            renderOrgHierarchy();
+            populateMeetingDropdownFilter();
+        }
+
+        function updateSummaryMetrics() {
+            const total = automations.length;
+            const inPipeline = automations.filter(a => a.status === "Idea" || a.status === "Approved" || a.status === "In Development").length;
+            const inProd = automations.filter(a => a.status === "In Production").length;
+
+            let crossPollCount = 0;
+            let totalAnnualHours = 0;
+
+            automations.forEach(a => {
+                if (a.status === "In Production") {
+                    const appInstances = 1 + (a.adoptions ? a.adoptions.length : 0);
+                    if (a.adoptions && a.adoptions.length > 0) {
+                        crossPollCount += a.adoptions.length;
+                    }
+                    totalAnnualHours += (a.toilHoursMonth * 12) * appInstances;
+                }
+            });
+
+            const costSaved = totalAnnualHours * 75; // standard $75/hr blended rate
+
+            document.getElementById("statTotalIdeas").innerText = total;
+            document.getElementById("statInPipeline").innerText = inPipeline;
+            document.getElementById("statInProduction").innerText = inProd;
+            document.getElementById("statCrossPollinated").innerText = crossPollCount;
+            document.getElementById("statHoursSaved").innerText = totalAnnualHours.toLocaleString() + " hrs";
+            document.getElementById("statCostSavings").innerText = "$" + costSaved.toLocaleString();
+
+            document.getElementById("badgeActiveCount").innerText = inPipeline;
+            document.getElementById("badgeCatalogCount").innerText = inProd;
+        }
+
+        // --- 5. FUNNEL BOARD & TABLE ---
+        function filterAutomations() {
+            const vFilter = document.getElementById("funnelFilterVertical").value;
+            const hFilter = document.getElementById("funnelFilterHorizontal").value;
+            const sFilter = document.getElementById("funnelFilterStatus").value;
+            const query = document.getElementById("funnelSearch").value.toLowerCase().trim();
+
+            return automations.filter(item => {
+                if (vFilter !== "ALL" && item.verticalId !== vFilter) return false;
+                if (hFilter !== "ALL" && item.horizontalId !== hFilter) return false;
+                if (sFilter !== "ALL" && item.status !== sFilter) return false;
+                if (query) {
+                    const matchTitle = item.title.toLowerCase().includes(query);
+                    const matchApp = item.app.toLowerCase().includes(query);
+                    const matchDesc = item.desc.toLowerCase().includes(query);
+                    const matchId = item.id.toLowerCase().includes(query);
+                    if (!matchTitle && !matchApp && !matchDesc && !matchId) return false;
+                }
+                return true;
+            });
+        }
+
+        function renderFunnelBoard() {
+            const filtered = filterAutomations();
+
+            const columns = {
+                "Idea": document.getElementById("column-Idea"),
+                "Approved": document.getElementById("column-Approved"),
+                "In Development": document.getElementById("column-InDevelopment"),
+                "In Production": document.getElementById("column-InProduction"),
+                "Rejected": document.getElementById("column-Rejected")
+            };
+
+            const counts = {
+                "Idea": 0,
+                "Approved": 0,
+                "In Development": 0,
+                "In Production": 0,
+                "Rejected": 0
+            };
+
+            // Clear columns
+            Object.keys(columns).forEach(key => {
+                if (columns[key]) columns[key].innerHTML = "";
+            });
+
+            filtered.forEach(item => {
+                const colKey = item.status;
+                if (counts[colKey] !== undefined) {
+                    counts[colKey]++;
+                }
+
+                const colEl = columns[colKey];
+                if (!colEl) return;
+
+                const card = document.createElement("div");
+                card.className = "bg-white p-3 rounded-lg border border-trust-border shadow-xs hover:shadow-md transition-shadow cursor-pointer relative group";
+                card.onclick = () => openIdeaDetail(item.id);
+
+                const vData = ORG_HIERARCHY[item.verticalId] || { code: "ORG" };
+                const hData = vData.horizontals ? vData.horizontals.find(h => h.id === item.horizontalId) : null;
+                const hName = hData ? hData.name : item.horizontalId;
+
+                let badgeClass = "badge-idea";
+                if (item.status === "Approved") badgeClass = "badge-approved";
+                if (item.status === "In Development") badgeClass = "badge-dev";
+                if (item.status === "In Production") badgeClass = "badge-prod";
+                if (item.status === "Rejected") badgeClass = "badge-rejected";
+
+                const hasGit = item.gitlabUrl ? `<span title="GitLab Linked" class="text-[10px] text-orange-600 font-bold bg-orange-50 px-1.5 py-0.5 rounded border border-orange-200">GitLab ✓</span>` : "";
+                const isReused = item.adoptions && item.adoptions.length > 0 ? `<span title="Cross-Pollinated across ${item.adoptions.length} other apps" class="text-[10px] text-purple-700 font-bold bg-purple-50 px-1.5 py-0.5 rounded border border-purple-200">🔄 ${item.adoptions.length} apps</span>` : "";
+
+                // Latest meeting note snippet
+                const latestNote = item.meetingNotes && item.meetingNotes.length > 0 ? item.meetingNotes[item.meetingNotes.length - 1] : null;
+                const meetingSnippet = latestNote ? `
+         <div class="mt-2 pt-2 border-t border-gray-100 text-[10px] text-trust-muted flex items-start space-x-1">
+           <span class="text-trust-teal font-semibold">${latestNote.date}:</span>
+           <span class="truncate">${latestNote.text}</span>
+         </div>
+       ` : "";
+
+                card.innerHTML = `
+         <div class="flex items-center justify-between mb-1.5">
+           <span class="text-[10px] font-mono font-bold text-trust-purple">${item.id}</span>
+           <span class="text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeClass}">${item.status}</span>
+         </div>
+         <h4 class="text-xs font-bold text-trust-purple leading-tight group-hover:text-trust-teal transition-colors line-clamp-2">${item.title}</h4>
+         <div class="text-[11px] text-trust-muted mt-1 truncate">App: <strong class="text-gray-800">${item.app}</strong></div>
+         <div class="flex items-center justify-between text-[10px] text-gray-500 mt-2">
+           <span class="bg-gray-100 px-1.5 py-0.5 rounded font-medium">${vData.code} · ${item.tech}</span>
+           <span class="font-semibold text-amber-700">${item.toilHoursMonth} hrs/mo</span>
+         </div>
+         <div class="flex items-center space-x-1.5 mt-2">
+           ${hasGit}
+           ${isReused}
+         </div>
+         ${meetingSnippet}
+       `;
+
+                colEl.appendChild(card);
+            });
+
+            // Update column count badges
+            document.getElementById("count-Idea").innerText = counts["Idea"];
+            document.getElementById("count-Approved").innerText = counts["Approved"];
+            document.getElementById("count-InDevelopment").innerText = counts["In Development"];
+            document.getElementById("count-InProduction").innerText = counts["In Production"];
+            document.getElementById("count-Rejected").innerText = counts["Rejected"];
+        }
+
+        function renderFunnelTable() {
+            const filtered = filterAutomations();
+            const tbody = document.getElementById("funnelTableBody");
+            tbody.innerHTML = "";
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-xs text-trust-muted">No automation ideas match current filter criteria.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+                const hData = vData.horizontals ? vData.horizontals.find(h => h.id === item.horizontalId) : null;
+                const hName = hData ? hData.name : item.horizontalId;
+
+                let badgeClass = "badge-idea";
+                if (item.status === "Approved") badgeClass = "badge-approved";
+                if (item.status === "In Development") badgeClass = "badge-dev";
+                if (item.status === "In Production") badgeClass = "badge-prod";
+                if (item.status === "Rejected") badgeClass = "badge-rejected";
+
+                const latestNote = item.meetingNotes && item.meetingNotes.length > 0 ? item.meetingNotes[item.meetingNotes.length - 1] : null;
+                const noteText = latestNote ? `<span class="font-semibold text-trust-teal">${latestNote.date}:</span> ${latestNote.text}` : `<span class="text-gray-400">No notes yet</span>`;
+
+                const tr = document.createElement("tr");
+                tr.className = "hover:bg-trust-lavender/30 cursor-pointer";
+                tr.onclick = () => openIdeaDetail(item.id);
+
+                tr.innerHTML = `
+         <td class="px-3 py-2.5 font-medium text-trust-purple">
+           <span class="font-mono text-[10px] text-trust-muted block">${item.id}</span>
+           <div class="font-bold max-w-xs truncate">${item.title}</div>
+         </td>
+         <td class="px-3 py-2.5">
+           <div class="font-medium text-gray-800">${vData.name}</div>
+           <div class="text-[10px] text-trust-muted">${hName}</div>
+         </td>
+         <td class="px-3 py-2.5 font-medium text-gray-800">${item.app}</td>
+         <td class="px-3 py-2.5">
+           <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${badgeClass}">${item.status}</span>
+         </td>
+         <td class="px-3 py-2.5 font-bold text-amber-700">${item.toilHoursMonth} hrs/mo</td>
+         <td class="px-3 py-2.5">
+           ${item.gitlabUrl ? `<a href="${item.gitlabUrl}" target="_blank" onclick="event.stopPropagation();" class="text-orange-600 hover:underline font-mono text-[11px]">GitLab Repo ↗</a>` : `<span class="text-gray-400 text-[10px]">Pending</span>`}
+         </td>
+         <td class="px-3 py-2.5 max-w-xs truncate text-[11px] text-gray-600">${noteText}</td>
+         <td class="px-3 py-2.5 text-center">
+           <button class="px-2 py-1 bg-trust-purple text-white text-[10px] font-semibold rounded hover:bg-trust-vibrant">
+             View
+           </button>
+         </td>
+       `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // --- 6. CATALOG (KNOWLEDGE HUB) ---
+        function renderCatalog() {
+            const techFilter = document.getElementById("catalogFilterTech").value;
+            const search = document.getElementById("catalogSearch").value.toLowerCase().trim();
+            const grid = document.getElementById("catalogGrid");
+            grid.innerHTML = "";
+
+            // Only "In Production" automations form the official verified catalog
+            const prodItems = automations.filter(a => a.status === "In Production");
+
+            const filtered = prodItems.filter(item => {
+                if (techFilter !== "ALL" && item.tech !== techFilter) return false;
+                if (search) {
+                    const matchTitle = item.title.toLowerCase().includes(search);
+                    const matchApp = item.app.toLowerCase().includes(search);
+                    const matchDesc = item.desc.toLowerCase().includes(search);
+                    if (!matchTitle && !matchApp && !matchDesc) return false;
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-3 text-center py-8 text-xs text-trust-muted">No production automations matched the catalog filter.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-lg border border-trust-border shadow-sm p-4 flex flex-col justify-between hover:border-trust-teal transition-all";
+
+                const adoptionsBadge = item.adoptions && item.adoptions.length > 0
+                    ? `<span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Reused across ${item.adoptions.length} other apps</span>`
+                    : `<span class="bg-gray-100 text-gray-600 text-[10px] font-medium px-2 py-0.5 rounded-full">Single App</span>`;
+
+                card.innerHTML = `
+         <div>
+           <div class="flex items-center justify-between mb-2">
+             <span class="text-[10px] font-mono font-bold bg-trust-lavender text-trust-purple px-1.5 py-0.5 rounded">${item.id}</span>
+             ${adoptionsBadge}
+           </div>
+           <h3 class="text-xs font-bold text-trust-purple leading-snug mb-1">${item.title}</h3>
+           <p class="text-[11px] text-trust-muted mb-2 line-clamp-2">${item.desc}</p>
+
+           <div class="bg-gray-50 p-2 rounded border border-gray-100 text-[10px] space-y-1 mb-3">
+             <div><strong class="text-gray-700">Origin App:</strong> ${item.app} (${vData.name})</div>
+             <div><strong class="text-gray-700">Tech & Playbook:</strong> <span class="font-mono text-trust-teal">${item.tech} · ${item.playbookTag || 'N/A'}</span></div>
+             <div><strong class="text-gray-700">Annual Hours Saved:</strong> <span class="text-emerald-700 font-bold">${item.toilHoursMonth * 12} hrs/yr</span></div>
+           </div>
+         </div>
+
+         <div class="pt-3 border-t border-trust-border flex items-center justify-between gap-2">
+           <a href="${item.gitlabUrl}" target="_blank" class="inline-flex items-center text-xs text-orange-600 font-semibold hover:underline">
+             <svg class="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 01-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 014.82 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.49h8.1l2.44-7.49a.42.42 0 01.11-.18.43.43 0 01.58 0 .42.42 0 01.11.16l2.44 7.51 1.22 3.78a.84.84 0 01-.3.94z"/></svg>
+             GitLab Repo ↗
+           </a>
+           <div class="flex items-center space-x-1.5">
+             <button onclick="openIdeaDetail('${item.id}')" class="px-2 py-1 text-[11px] font-semibold border border-trust-border rounded text-trust-purple hover:bg-trust-lavender">
+               Details & Notes
+             </button>
+             <button onclick="openMigrationModal('${item.id}')" class="px-2 py-1 text-[11px] font-semibold bg-trust-teal text-white rounded hover:bg-trust-tealdark shadow-xs">
+               Request Migration
+             </button>
+           </div>
+         </div>
+       `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // --- 7. CROSS-POLLINATION (REUSABILITY MATRIX) ---
+        function renderCrossPollinationMatrix() {
+            const tbody = document.getElementById("crossPollTableBody");
+            tbody.innerHTML = "";
+
+            const prodItems = automations.filter(a => a.status === "In Production");
+
+            prodItems.forEach(item => {
+                const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+                const hData = vData.horizontals ? vData.horizontals.find(h => h.id === item.horizontalId) : null;
+                const originH = hData ? hData.name : item.horizontalId;
+
+                const tr = document.createElement("tr");
+
+                let adoptedHtml = "";
+                if (item.adoptions && item.adoptions.length > 0) {
+                    adoptedHtml = item.adoptions.map(ad => {
+                        const adV = ORG_HIERARCHY[ad.verticalId] || { code: ad.verticalId };
+                        return `
+             <div class="inline-flex items-center space-x-1 bg-purple-50 border border-purple-200 text-purple-900 px-2 py-0.5 rounded text-[10px] m-0.5">
+               <span class="font-bold">${adV.code}:</span>
+               <span>${ad.app}</span>
+               <span class="text-gray-400">(${ad.date})</span>
+             </div>
+           `;
+                    }).join("");
+                } else {
+                    adoptedHtml = `<span class="text-gray-400 text-[10px] italic">Not yet migrated to other verticals. Click Request Migration to adapt.</span>`;
+                }
+
+                tr.innerHTML = `
+         <td class="px-3 py-3">
+           <div class="font-bold text-trust-purple">${item.title}</div>
+           <div class="font-mono text-[10px] text-trust-muted">${item.id} · ${item.tech}</div>
+         </td>
+         <td class="px-3 py-3">
+           <div class="font-semibold text-gray-800">${item.app}</div>
+           <div class="text-[10px] text-trust-muted">${vData.name} &gt; ${originH}</div>
+         </td>
+         <td class="px-3 py-3 max-w-sm">
+           <div class="flex flex-wrap items-center">
+             ${adoptedHtml}
+           </div>
+         </td>
+         <td class="px-3 py-3 text-center whitespace-nowrap">
+           <button onclick="openMigrationModal('${item.id}')" class="px-2.5 py-1 text-xs font-semibold bg-trust-teal text-white rounded hover:bg-trust-tealdark shadow-xs">
+             + Migrate to My App
+           </button>
+         </td>
+       `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // --- 8. DATEWISE MEETING LOG TAB ---
+        function renderMeetingLog() {
+            const filterId = document.getElementById("meetingFilterIdea").value;
+            const container = document.getElementById("timelineContainer");
+            container.innerHTML = "";
+
+            let allNotes = [];
+
+            automations.forEach(item => {
+                if (filterId !== "ALL" && item.id !== filterId) return;
+
+                if (item.meetingNotes && item.meetingNotes.length > 0) {
+                    item.meetingNotes.forEach(note => {
+                        allNotes.push({
+                            ideaId: item.id,
+                            ideaTitle: item.title,
+                            verticalId: item.verticalId,
+                            status: item.status,
+                            date: note.date,
+                            author: note.author,
+                            text: note.text
+                        });
+                    });
+                }
+            });
+
+            // Sort chronological descending (latest meeting first)
+            allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            if (allNotes.length === 0) {
+                container.innerHTML = `<div class="text-center py-6 text-xs text-trust-muted">No meeting discussions recorded for this selection.</div>`;
+                return;
+            }
+
+            allNotes.forEach(n => {
+                const vData = ORG_HIERARCHY[n.verticalId] || { code: "ORG" };
+                const entry = document.createElement("div");
+                entry.className = "relative pl-8 z-10";
+
+                entry.innerHTML = `
+         <!-- Dot -->
+         <div class="absolute left-2 top-1.5 w-3 h-3 rounded-full bg-trust-teal border-2 border-white shadow-sm"></div>
+
+         <div class="bg-gray-50 border border-trust-border rounded-lg p-3 hover:bg-trust-lavender/40 transition-colors">
+           <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs mb-1">
+             <div class="flex items-center space-x-2">
+               <span class="font-bold text-trust-purple">${n.date}</span>
+               <span class="bg-trust-lavender text-trust-purple px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold">${n.ideaId}</span>
+               <span class="font-bold text-gray-800">${n.ideaTitle}</span>
+             </div>
+             <span class="text-[10px] text-trust-muted font-medium mt-1 sm:mt-0">Reviewer: <strong class="text-trust-purple">${n.author}</strong></span>
+           </div>
+           <p class="text-xs text-gray-700 mt-1 leading-relaxed bg-white p-2 rounded border border-gray-200">
+             ${n.text}
+           </p>
+           <div class="mt-2 flex items-center justify-between text-[10px] text-trust-muted">
+             <span>Vertical: ${vData.code}</span>
+             <button onclick="openIdeaDetail('${n.ideaId}')" class="text-trust-teal font-semibold hover:underline">
+               View Full Idea Record & Workflow ↗
+             </button>
+           </div>
+         </div>
+       `;
+
+                container.appendChild(entry);
+            });
+        }
+
+        function populateMeetingDropdownFilter() {
+            const select = document.getElementById("meetingFilterIdea");
+            select.innerHTML = `<option value="ALL">All Ideas & Meeting Topics (${automations.length})</option>`;
+            automations.forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item.id;
+                opt.textContent = `${item.id} - ${item.title}`;
+                select.appendChild(opt);
+            });
+        }
+
+        // --- 9. ANNUAL REPORT & ROI SCORECARD ---
+        function renderReport() {
+            const tbody = document.getElementById("reportTableBody");
+            tbody.innerHTML = "";
+
+            let totalAnnualHrs = 0;
+            let appRecords = [];
+
+            // Calculate for each automation and its adopted applications
+            automations.filter(a => a.status === "In Production").forEach(item => {
+                const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+                const hData = vData.horizontals ? vData.horizontals.find(h => h.id === item.horizontalId) : null;
+                const hName = hData ? hData.name : item.horizontalId;
+
+                // Origin application record
+                const annualHrs = item.toilHoursMonth * 12;
+                const annualCost = annualHrs * 75;
+                totalAnnualHrs += annualHrs;
+
+                appRecords.push({
+                    app: item.app,
+                    verticalName: vData.name,
+                    horizName: hName,
+                    title: item.title,
+                    tech: item.tech,
+                    gitlabUrl: item.gitlabUrl,
+                    monthlyHrs: item.toilHoursMonth,
+                    annualHrs: annualHrs,
+                    annualCost: annualCost,
+                    isOrigin: true,
+                    reusedAcross: item.adoptions ? item.adoptions.length : 0
+                });
+
+                // Add records for each migrated application
+                if (item.adoptions && item.adoptions.length > 0) {
+                    item.adoptions.forEach(ad => {
+                        const adV = ORG_HIERARCHY[ad.verticalId] || { name: ad.verticalId };
+                        const adH = adV.horizontals ? adV.horizontals.find(h => h.id === ad.horizontalId) : null;
+                        const adHName = adH ? adH.name : ad.horizontalId;
+
+                        // Conservatively assume 80% toil reduction on secondary adapted apps
+                        const adAnnualHrs = Math.round(item.toilHoursMonth * 12 * 0.9);
+                        const adCost = adAnnualHrs * 75;
+                        totalAnnualHrs += adAnnualHrs;
+
+                        appRecords.push({
+                            app: ad.app,
+                            verticalName: adV.name,
+                            horizName: adHName,
+                            title: `${item.title} (Adopted)`,
+                            tech: item.tech,
+                            gitlabUrl: item.gitlabUrl,
+                            monthlyHrs: Math.round(item.toilHoursMonth * 0.9),
+                            annualHrs: adAnnualHrs,
+                            annualCost: adCost,
+                            isOrigin: false,
+                            reusedAcross: 0
+                        });
+                    });
+                }
+            });
+
+            // Sort by annual hours saved descending
+            appRecords.sort((a, b) => b.annualHrs - a.annualHrs);
+
+            appRecords.forEach(rec => {
+                const tr = document.createElement("tr");
+                tr.className = "hover:bg-trust-lavender/30";
+
+                const tag = rec.isOrigin
+                    ? `<span class="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Origin Script</span>`
+                    : `<span class="bg-purple-100 text-purple-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Migrated Blueprint</span>`;
+
+                tr.innerHTML = `
+         <td class="px-3 py-2.5 font-bold text-trust-purple">
+           ${rec.app}
+           <div class="mt-0.5">${tag}</div>
+         </td>
+         <td class="px-3 py-2.5">
+           <div class="font-medium text-gray-800">${rec.verticalName}</div>
+           <div class="text-[10px] text-trust-muted">${rec.horizName}</div>
+         </td>
+         <td class="px-3 py-2.5 max-w-xs truncate text-gray-800 font-medium">${rec.title}</td>
+         <td class="px-3 py-2.5 font-mono text-[11px] text-trust-teal">
+           <a href="${rec.gitlabUrl}" target="_blank" class="hover:underline">${rec.tech} ↗</a>
+         </td>
+         <td class="px-3 py-2.5 text-right font-semibold text-gray-700">${rec.monthlyHrs} hrs</td>
+         <td class="px-3 py-2.5 text-right font-bold text-emerald-700">${rec.annualHrs.toLocaleString()} hrs</td>
+         <td class="px-3 py-2.5 text-right font-bold text-trust-purple">$${rec.annualCost.toLocaleString()}</td>
+         <td class="px-3 py-2.5 text-center text-trust-muted">
+           ${rec.reusedAcross > 0 ? `<span class="font-bold text-purple-700">${rec.reusedAcross} teams</span>` : '-'}
+         </td>
+       `;
+
+                tbody.appendChild(tr);
+            });
+
+            // Update executive KPI figures
+            document.getElementById("reportMetricHours").innerText = totalAnnualHrs.toLocaleString() + " hrs";
+            document.getElementById("reportMetricCost").innerText = "$" + (totalAnnualHrs * 75).toLocaleString();
+            document.getElementById("reportMetricActiveCount").innerText = appRecords.length + " App Deployments";
+        }
+
+        function initCharts() {
+            // 1. Chart Vertical Hours
+            const ctxV = document.getElementById("chartVerticalHours");
+            if (!ctxV) return;
+
+            if (chartVerticalHoursInstance) {
+                chartVerticalHoursInstance.destroy();
+            }
+
+            chartVerticalHoursInstance = new Chart(ctxV, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Consumer Banking (V1)',
+                        'Wholesale Banking (V2)',
+                        'Wealth Management (V3)',
+                        'Enterprise Core & Payments (V4)'
+                    ],
+                    datasets: [
+                        {
+                            label: 'Direct Origin Hours Saved (Annually)',
+                            data: [1296, 528, 0, 1884],
+                            backgroundColor: '#2D1A47',
+                            borderRadius: 4
+                        },
+                        {
+                            label: 'Cross-Pollination Adoption Hours Saved',
+                            data: [410, 518, 518, 518],
+                            backgroundColor: '#00828A',
+                            borderRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true, grid: { display: false } },
+                        y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Hours Saved / Year' } }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+                    }
+                }
+            });
+
+            // 2. Chart Tech Distribution
+            const ctxT = document.getElementById("chartTechDistribution");
+            if (!ctxT) return;
+
+            if (chartTechDistributionInstance) {
+                chartTechDistributionInstance.destroy();
+            }
+
+            chartTechDistributionInstance = new Chart(ctxT, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Ansible Playbooks', 'Python Daemons', 'Go K8s Operators', 'Bash Automation', 'Terraform Modules'],
+                    datasets: [{
+                        data: [45, 30, 12, 8, 5],
+                        backgroundColor: ['#2D1A47', '#00828A', '#582672', '#0E7A4A', '#B86A00']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 10 } } }
+                    }
+                }
+            });
+        }
+
+        function updateCharts() {
+            if (chartVerticalHoursInstance) chartVerticalHoursInstance.update();
+            if (chartTechDistributionInstance) chartTechDistributionInstance.update();
+        }
+
+        function exportReportCSV() {
+            let csv = "Application Name,Vertical,Horizontal,Automation Title,Technology,GitLab URL,Monthly Hours Saved,Annual Hours Saved,Annual Cost Avoidance (USD),Type\n";
+
+            automations.filter(a => a.status === "In Production").forEach(item => {
+                const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+                const hData = vData.horizontals ? vData.horizontals.find(h => h.id === item.horizontalId) : null;
+                const hName = hData ? hData.name : item.horizontalId;
+                const annualHrs = item.toilHoursMonth * 12;
+                const cost = annualHrs * 75;
+
+                csv += `"${item.app}","${vData.name}","${hName}","${item.title}","${item.tech}","${item.gitlabUrl}",${item.toilHoursMonth},${annualHrs},${cost},"Origin"\n`;
+
+                if (item.adoptions) {
+                    item.adoptions.forEach(ad => {
+                        const adV = ORG_HIERARCHY[ad.verticalId] || { name: ad.verticalId };
+                        const adH = adV.horizontals ? adV.horizontals.find(h => h.id === ad.horizontalId) : null;
+                        const adHName = adH ? adH.name : ad.horizontalId;
+                        const adAnn = Math.round(item.toilHoursMonth * 12 * 0.9);
+                        const adCost = adAnn * 75;
+                        csv += `"${ad.app}","${adV.name}","${adHName}","${item.title} (Adopted)","${item.tech}","${item.gitlabUrl}",${Math.round(item.toilHoursMonth * 0.9)},${adAnn},${adCost},"Adopted"\n`;
+                    });
+                }
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", `trust_SRE_Productivity_Report_${new Date().getFullYear()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("Productivity & ROI Report CSV generated and downloaded.", "📊");
+        }
+
+        // --- 10. ORG HIERARCHY TAB ---
+        function renderOrgHierarchy() {
+            const grid = document.getElementById("orgHierarchyGrid");
+            grid.innerHTML = "";
+
+            Object.keys(ORG_HIERARCHY).forEach(key => {
+                const v = ORG_HIERARCHY[key];
+                const card = document.createElement("div");
+                card.className = "bg-white rounded-lg border border-trust-border p-4 shadow-sm";
+
+                const horizList = v.horizontals.map(h => `
+         <div class="flex items-center justify-between p-2 bg-gray-50 rounded border border-gray-100 text-xs">
+           <div>
+             <span class="font-bold text-trust-purple">${h.name}</span>
+             <span class="text-[10px] text-trust-muted block">Queue Lead: ${h.lead}</span>
+           </div>
+           <span class="text-[10px] bg-trust-lavender text-trust-purple font-semibold px-2 py-0.5 rounded">Active Queue</span>
+         </div>
+       `).join("");
+
+                card.innerHTML = `
+         <div class="flex items-center justify-between border-b border-trust-border pb-2.5 mb-3">
+           <div>
+             <span class="text-[10px] uppercase font-bold text-trust-teal tracking-wider">${v.code}</span>
+             <h3 class="text-sm font-bold text-trust-purple">${v.name}</h3>
+             <p class="text-[11px] text-trust-muted">SRE Executive: ${v.lead}</p>
+           </div>
+           <span class="bg-trust-purple text-white text-[10px] font-bold px-2 py-1 rounded">
+             ${v.horizontals.length} Horizontals
+           </span>
+         </div>
+         <div class="space-y-2">
+           <h4 class="text-[11px] font-bold text-trust-muted uppercase tracking-wider">Configured Horizontal Queues:</h4>
+           ${horizList}
+         </div>
+       `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // --- 11. DROPDOWNS & DYNAMIC OPTIONS ---
+        function populateDropdowns() {
+            // Filter horizontal dropdown based on vertical
+            updateHorizontalFilter("ALL");
+
+            // Modals
+            populateHorizontalDropdown("newIdeaHorizontal", "V1");
+            populateHorizontalDropdown("migTargetHorizontal", "V1");
+
+            // Migration source script dropdown
+            populateMigrationSourceScripts();
+        }
+
+        function updateHorizontalFilter(vId) {
+            const hSelect = document.getElementById("funnelFilterHorizontal");
+            hSelect.innerHTML = `<option value="ALL">All Horizontals</option>`;
+
+            if (vId === "ALL") {
+                Object.keys(ORG_HIERARCHY).forEach(k => {
+                    ORG_HIERARCHY[k].horizontals.forEach(h => {
+                        const opt = document.createElement("option");
+                        opt.value = h.id;
+                        opt.textContent = `${ORG_HIERARCHY[k].code} - ${h.name}`;
+                        hSelect.appendChild(opt);
+                    });
+                });
+            } else if (ORG_HIERARCHY[vId]) {
+                ORG_HIERARCHY[vId].horizontals.forEach(h => {
+                    const opt = document.createElement("option");
+                    opt.value = h.id;
+                    opt.textContent = h.name;
+                    hSelect.appendChild(opt);
+                });
+            }
+        }
+
+        function populateHorizontalDropdown(elementId, verticalId) {
+            const sel = document.getElementById(elementId);
+            if (!sel) return;
+            sel.innerHTML = "";
+
+            if (ORG_HIERARCHY[verticalId]) {
+                ORG_HIERARCHY[verticalId].horizontals.forEach(h => {
+                    const opt = document.createElement("option");
+                    opt.value = h.id;
+                    opt.textContent = h.name;
+                    sel.appendChild(opt);
+                });
+            }
+        }
+
+        function populateMigrationSourceScripts() {
+            const sel = document.getElementById("migSourceScript");
+            if (!sel) return;
+            sel.innerHTML = "";
+
+            const prodItems = automations.filter(a => a.status === "In Production");
+            prodItems.forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item.id;
+                opt.textContent = `${item.id} - ${item.title} (${item.tech})`;
+                sel.appendChild(opt);
+            });
+
+            sel.addEventListener("change", updateMigrationSourcePreview);
+            updateMigrationSourcePreview();
+        }
+
+        function updateMigrationSourcePreview() {
+            const sel = document.getElementById("migSourceScript");
+            const preview = document.getElementById("migSourceDetails");
+            if (!sel || !preview) return;
+
+            const item = automations.find(a => a.id === sel.value);
+            if (!item) {
+                preview.innerHTML = "Select an automation to view details.";
+                return;
+            }
+
+            const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+            preview.innerHTML = `
+       <div><strong>Origin Application:</strong> ${item.app} (${vData.name})</div>
+       <div><strong>Technology:</strong> ${item.tech} · ${item.playbookTag || 'N/A'}</div>
+       <div><strong>GitLab Link:</strong> <a href="${item.gitlabUrl}" target="_blank" class="text-orange-600 hover:underline font-mono">${item.gitlabUrl}</a></div>
+       <div><strong>Current Reusability:</strong> Deployed in ${item.adoptions ? item.adoptions.length + 1 : 1} applications bank-wide.</div>
+     `;
+        }
+
+        // --- 12. MODAL & WORKFLOW MANAGEMENT ---
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove("hidden");
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add("hidden");
+        }
+
+        function openMigrationModal(preselectedScriptId = null) {
+            populateMigrationSourceScripts();
+            if (preselectedScriptId) {
+                const sel = document.getElementById("migSourceScript");
+                sel.value = preselectedScriptId;
+                updateMigrationSourcePreview();
+            }
+            openModal("modalMigration");
+        }
+
+        function openIdeaDetail(ideaId) {
+            const item = automations.find(a => a.id === ideaId);
+            if (!item) return;
+
+            currentEditingIdeaId = ideaId;
+
+            document.getElementById("detailTitle").innerText = `${item.id}: ${item.title}`;
+
+            const statusBadge = document.getElementById("detailBadgeStatus");
+            statusBadge.innerText = item.status;
+            statusBadge.className = "text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider";
+            if (item.status === "Idea") statusBadge.classList.add("bg-purple-100", "text-purple-800");
+            if (item.status === "Approved") statusBadge.classList.add("bg-teal-100", "text-teal-800");
+            if (item.status === "In Development") statusBadge.classList.add("bg-amber-100", "text-amber-800");
+            if (item.status === "In Production") statusBadge.classList.add("bg-emerald-100", "text-emerald-800");
+            if (item.status === "Rejected") statusBadge.classList.add("bg-red-100", "text-red-800");
+
+            const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
+            const hData = vData.horizontals ? vData.horizontals.find(h => h.id === item.horizontalId) : null;
+            document.getElementById("detailVertical").innerText = vData.name;
+            document.getElementById("detailHorizontal").innerText = hData ? hData.name : item.horizontalId;
+            document.getElementById("detailApp").innerText = item.app;
+            document.getElementById("detailToilHours").innerText = `${item.toilHoursMonth} hrs/mo (${item.toilHoursMonth * 12} hrs/yr)`;
+            document.getElementById("detailDesc").innerText = item.desc;
+
+            document.getElementById("detailGitLabInput").value = item.gitlabUrl || "";
+            document.getElementById("detailGitLabLink").href = item.gitlabUrl || "#";
+            if (!item.gitlabUrl) {
+                document.getElementById("detailGitLabLink").classList.add("opacity-50", "pointer-events-none");
+            } else {
+                document.getElementById("detailGitLabLink").classList.remove("opacity-50", "pointer-events-none");
+            }
+
+            document.getElementById("detailPlaybookTag").value = item.playbookTag || "";
+
+            // Status selector
+            document.getElementById("detailStatusSelect").value = item.status;
+            const rejBox = document.getElementById("rejectionReasonBox");
+            const rejInput = document.getElementById("detailRejectionReason");
+            if (item.status === "Rejected") {
+                rejBox.classList.remove("hidden");
+                rejInput.value = item.rejectionReason || "";
+            } else {
+                rejBox.classList.add("hidden");
+                rejInput.value = "";
+            }
+
+            // Cross pollination list
+            const cpList = document.getElementById("detailCrossPollList");
+            if (item.adoptions && item.adoptions.length > 0) {
+                cpList.innerHTML = item.adoptions.map(ad => {
+                    const adV = ORG_HIERARCHY[ad.verticalId] || { name: ad.verticalId };
+                    return `
+           <div class="flex items-center justify-between py-1 border-b border-purple-100 last:border-none">
+             <div>
+               <strong class="text-purple-950">${ad.app}</strong>
+               <span class="text-gray-500 text-[10px]">(${adV.name})</span>
+             </div>
+             <span class="text-trust-muted text-[10px]">Configured: ${ad.date}</span>
+           </div>
+         `;
+                }).join("");
+            } else {
+                cpList.innerHTML = `<span class="italic text-trust-muted text-[11px]">No external teams have configured this script yet. Eligible for cross-pollination.</span>`;
+            }
+
+            // Render meeting notes
+            renderModalMeetingNotes(item);
+
+            // Pre-fill date on meeting form to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById("newNoteDate").value = today;
+            document.getElementById("newNoteAuthor").value = "SRE Review Committee";
+            document.getElementById("newNoteText").value = "";
+
+            openModal("modalIdeaDetail");
+        }
+
+        function renderModalMeetingNotes(item) {
+            const container = document.getElementById("detailMeetingNotesList");
+            container.innerHTML = "";
+
+            if (!item.meetingNotes || item.meetingNotes.length === 0) {
+                container.innerHTML = `<div class="text-trust-muted text-xs italic py-2">No meeting notes recorded yet for this idea.</div>`;
+                return;
+            }
+
+            item.meetingNotes.forEach(n => {
+                const noteEl = document.createElement("div");
+                noteEl.className = "bg-gray-50 border border-gray-200 rounded p-2.5 text-xs";
+                noteEl.innerHTML = `
+         <div class="flex items-center justify-between text-[11px] mb-1">
+           <span class="font-bold text-trust-purple">${n.date}</span>
+           <span class="text-trust-muted font-medium">${n.author}</span>
+         </div>
+         <p class="text-gray-700 leading-normal">${n.text}</p>
+       `;
+                container.appendChild(noteEl);
+            });
+        }
+
+        function saveIdeaStatusChange() {
+            if (!currentEditingIdeaId) return;
+
+            const item = automations.find(a => a.id === currentEditingIdeaId);
+            if (!item) return;
+
+            const newStatus = document.getElementById("detailStatusSelect").value;
+            const rejReason = document.getElementById("detailRejectionReason").value;
+            const gitUrl = document.getElementById("detailGitLabInput").value.trim();
+            const playbook = document.getElementById("detailPlaybookTag").value.trim();
+
+            if (newStatus === "Rejected" && !rejReason.trim()) {
+                showToast("Please provide a valid architectural rejection reason.", "⚠️");
+                return;
+            }
+
+            const oldStatus = item.status;
+            item.status = newStatus;
+            item.rejectionReason = newStatus === "Rejected" ? rejReason : "";
+            item.gitlabUrl = gitUrl;
+            item.playbookTag = playbook;
+
+            // Automatically append an audit meeting log entry if phase changed
+            if (oldStatus !== newStatus) {
+                const today = new Date().toISOString().split('T')[0];
+                item.meetingNotes.push({
+                    date: today,
+                    author: "SRE Governance Board",
+                    text: `Lifecycle phase transitioned from '${oldStatus}' to '${newStatus}'. ${newStatus === 'Rejected' ? 'Justification: ' + rejReason : ''}`
+                });
+            }
+
+            renderAllTabs();
+            openIdeaDetail(currentEditingIdeaId); // re-render modal
+            showToast(`Idea ${item.id} status updated to ${newStatus}.`, "✓");
+        }
+
+        function handleAddMeetingNote() {
+            if (!currentEditingIdeaId) return;
+            const item = automations.find(a => a.id === currentEditingIdeaId);
+            if (!item) return;
+
+            const date = document.getElementById("newNoteDate").value;
+            const author = document.getElementById("newNoteAuthor").value.trim();
+            const text = document.getElementById("newNoteText").value.trim();
+
+            if (!date || !author || !text) {
+                showToast("Please complete meeting date, chair/reviewer, and notes.", "⚠️");
+                return;
+            }
+
+            if (!item.meetingNotes) item.meetingNotes = [];
+            item.meetingNotes.push({ date, author, text });
+
+            document.getElementById("newNoteText").value = "";
+            renderModalMeetingNotes(item);
+            renderMeetingLog();
+            renderFunnelBoard();
+            renderFunnelTable();
+            showToast("Meeting note successfully logged datewise.", "📝");
+        }
+
+        // --- 13. FORM SUBMISSIONS ---
+        function handleNewIdeaSubmit(e) {
+            e.preventDefault();
+
+            const title = document.getElementById("newIdeaTitle").value.trim();
+            const submitter = document.getElementById("newIdeaSubmitter").value.trim();
+            const email = document.getElementById("newIdeaEmail").value.trim();
+            const vId = document.getElementById("newIdeaVertical").value;
+            const hId = document.getElementById("newIdeaHorizontal").value;
+            const app = document.getElementById("newIdeaApp").value.trim();
+            const tech = document.getElementById("newIdeaTech").value;
+            const toil = parseInt(document.getElementById("newIdeaToilHours").value, 10) || 10;
+            const freq = document.getElementById("newIdeaFreq").value;
+            const desc = document.getElementById("newIdeaDesc").value.trim();
+            const git = document.getElementById("newIdeaGitLab").value.trim();
+
+            const newId = `AUTO-${100 + automations.length + 1}`;
+            const today = new Date().toISOString().split('T')[0];
+
+            const newRecord = {
+                id: newId,
+                title: title,
+                submitter: submitter,
+                submitterEmail: email,
+                verticalId: vId,
+                horizontalId: hId,
+                app: app,
+                tech: tech,
+                playbookTag: "",
+                gitlabUrl: git,
+                status: "Idea",
+                toilHoursMonth: toil,
+                freq: freq,
+                desc: desc,
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    {
+                        date: today,
+                        author: "System Intake & Submitter",
+                        text: `Initial toil submission logged by ${submitter} (${email}). Submitted to ${ORG_HIERARCHY[vId].code} queue.`
+                    }
+                ]
+            };
+
+            automations.unshift(newRecord);
+            document.getElementById("formNewIdea").reset();
+            closeModal("modalNewIdea");
+
+            renderAllTabs();
+            showToast(`New Toil Idea ${newId} submitted into the funnel!`, "💡");
+        }
+
+        function handleMigrationSubmit(e) {
+            e.preventDefault();
+
+            const sourceId = document.getElementById("migSourceScript").value;
+            const targetV = document.getElementById("migTargetVertical").value;
+            const targetH = document.getElementById("migTargetHorizontal").value;
+            const targetApp = document.getElementById("migTargetApp").value.trim();
+            const requestor = document.getElementById("migRequestor").value.trim();
+            const toil = parseInt(document.getElementById("migToilHours").value, 10) || 15;
+            const notes = document.getElementById("migNotes").value.trim();
+
+            const sourceItem = automations.find(a => a.id === sourceId);
+            if (!sourceItem) return;
+
+            const newMigId = `AUTO-${100 + automations.length + 1}`;
+            const today = new Date().toISOString().split('T')[0];
+
+            // Add to source item adoptions list
+            if (!sourceItem.adoptions) sourceItem.adoptions = [];
+            sourceItem.adoptions.push({
+                verticalId: targetV,
+                horizontalId: targetH,
+                app: targetApp,
+                date: today
+            });
+            sourceItem.crossPollinationCount = sourceItem.adoptions.length;
+
+            // Add as derivative Approved item into the Idea Funnel queue
+            const migRecord = {
+                id: newMigId,
+                title: `[Cross-Pollination] Adapt ${sourceItem.title} for ${targetApp}`,
+                submitter: requestor,
+                submitterEmail: `${requestor.toLowerCase().replace(/\s+/g, '.')}@trust.com`,
+                verticalId: targetV,
+                horizontalId: targetH,
+                app: targetApp,
+                tech: sourceItem.tech,
+                playbookTag: sourceItem.playbookTag,
+                gitlabUrl: sourceItem.gitlabUrl,
+                status: "Approved", // Migration of proven scripts starts at Approved
+                toilHoursMonth: toil,
+                freq: sourceItem.freq,
+                desc: `Cross-team adaptation of ${sourceItem.id} originated from ${sourceItem.app}. Configuration details: ${notes || 'Standard environment parameters and secret injection.'}`,
+                rejectionReason: "",
+                crossPollinationCount: 0,
+                adoptions: [],
+                meetingNotes: [
+                    {
+                        date: today,
+                        author: "Cross-Pollination Intake",
+                        text: `Migration requested by ${requestor} from proven automation ${sourceItem.id}. Fast-tracked to Approved backlog.`
+                    }
+                ]
+            };
+
+            automations.unshift(migRecord);
+
+            // Add meeting note to parent script
+            sourceItem.meetingNotes.push({
+                date: today,
+                author: "Reusability Registry",
+                text: `Cross-pollination request approved: Reusing blueprint for ${targetApp} (${ORG_HIERARCHY[targetV].code}). Linked ticket ${newMigId}.`
+            });
+
+            document.getElementById("formMigration").reset();
+            closeModal("modalMigration");
+
+            renderAllTabs();
+            showToast(`Cross-Pollination ticket ${newMigId} approved and linked to ${sourceItem.id}!`, "🔄");
+        }
+
+        // --- 14. TOAST NOTIFICATION UTILITY ---
+        function showToast(message, icon = "✓") {
+            const toast = document.getElementById("toastNotification");
+            document.getElementById("toastIcon").innerText = icon;
+            document.getElementById("toastMessage").innerText = message;
+
+            toast.classList.remove("translate-y-20");
+            toast.classList.add("translate-y-0");
+
+            setTimeout(() => {
+                toast.classList.remove("translate-y-0");
+                toast.classList.add("translate-y-20");
+            }, 3500);
+        }
+
+    </script>
+</body>
+
+</html>
