@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Truist Automation & SRE Knowledge Hub</title>
+    <title>Trust Automation & SRE Knowledge Hub</title>
     <!-- Tailwind CSS 3.4.17 -->
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <!-- Chart.js 4.4.1 -->
@@ -14,7 +14,7 @@
             theme: {
                 extend: {
                     colors: {
-                        truist: {
+                        trust: {
                             purple: '#2D1A47',
                             dark: '#1B0E2E',
                             deep: '#24133B',
@@ -95,33 +95,33 @@
 <body class="min-h-screen flex flex-col">
 
     <!-- TOP HEADER / BRAND NAVIGATION -->
-    <header class="bg-truist-purple text-white shadow-md border-b border-truist-vibrant sticky top-0 z-40">
+    <header class="bg-trust-purple text-white shadow-md border-b border-trust-vibrant sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Brand & Title -->
                 <div class="flex items-center space-x-3">
-                    <!-- Truist Dual 'T' Monogram Motif -->
+                    <!-- trust Dual 'T' Monogram Motif -->
                     <div
-                        class="w-10 h-10 rounded-lg bg-truist-teal flex items-center justify-center font-bold text-white text-xl shadow-inner tracking-tighter">
+                        class="w-10 h-10 rounded-lg bg-trust-teal flex items-center justify-center font-bold text-white text-xl shadow-inner tracking-tighter">
                         <span class="inline-block transform -translate-x-0.5">T</span><span
-                            class="inline-block transform translate-x-0.5 text-truist-dark">T</span>
+                            class="inline-block transform translate-x-0.5 text-trust-dark">T</span>
                     </div>
                     <div>
                         <div class="flex items-center space-x-2">
                             <span
-                                class="text-xs uppercase tracking-widest font-semibold text-truist-teallight opacity-90">Enterprise
+                                class="text-xs uppercase tracking-widest font-semibold text-trust-teallight opacity-90">Enterprise
                                 SRE & Production Support</span>
                             <span
-                                class="bg-truist-teal text-white text-[10px] font-bold px-1.5 py-0.5 rounded">v2.4</span>
+                                class="bg-trust-teal text-white text-[10px] font-bold px-1.5 py-0.5 rounded">v2.4</span>
                         </div>
-                        <h1 class="text-lg font-bold text-white tracking-tight">Truist Automation Hub</h1>
+                        <h1 class="text-lg font-bold text-white tracking-tight">trust Automation Hub</h1>
                     </div>
                 </div>
 
                 <!-- Global Quick Actions -->
                 <div class="flex items-center space-x-3">
                     <button id="btnOpenMigrationModal"
-                        class="inline-flex items-center px-3 py-1.5 border border-truist-teal text-xs font-semibold rounded-md text-white bg-truist-teal/20 hover:bg-truist-teal hover:text-white transition-colors duration-150 shadow-sm">
+                        class="inline-flex items-center px-3 py-1.5 border border-trust-teal text-xs font-semibold rounded-md text-white bg-trust-teal/20 hover:bg-trust-teal hover:text-white transition-colors duration-150 shadow-sm">
                         <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -129,8 +129,8 @@
                         Request Adoption / Migration
                     </button>
                     <button id="btnOpenNewIdeaModal"
-                        class="inline-flex items-center px-3.5 py-1.5 border border-transparent text-xs font-semibold rounded-md text-truist-dark bg-white hover:bg-truist-teallight transition-colors duration-150 shadow-sm">
-                        <svg class="w-3.5 h-3.5 mr-1.5 text-truist-teal" fill="none" stroke="currentColor"
+                        class="inline-flex items-center px-3.5 py-1.5 border border-transparent text-xs font-semibold rounded-md text-trust-dark bg-white hover:bg-trust-teallight transition-colors duration-150 shadow-sm">
+                        <svg class="w-3.5 h-3.5 mr-1.5 text-trust-teal" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -140,19 +140,19 @@
             </div>
 
             <!-- MAIN TABS NAVIGATION -->
-            <nav class="flex space-x-1 sm:space-x-4 border-t border-truist-deep pt-1 overflow-x-auto custom-scroll"
+            <nav class="flex space-x-1 sm:space-x-4 border-t border-trust-deep pt-1 overflow-x-auto custom-scroll"
                 aria-label="Tabs">
                 <button data-tab="tab-funnel"
-                    class="tab-btn active px-3 py-2 text-xs font-medium border-b-2 border-truist-teal text-white flex items-center space-x-1.5 whitespace-nowrap">
+                    class="tab-btn active px-3 py-2 text-xs font-medium border-b-2 border-trust-teal text-white flex items-center space-x-1.5 whitespace-nowrap">
                     <span>💡</span> <span>Idea Funnel & Pipeline</span>
                     <span id="badgeActiveCount"
-                        class="ml-1 bg-truist-vibrant text-white text-[10px] px-1.5 py-0.2 rounded-full">12</span>
+                        class="ml-1 bg-trust-vibrant text-white text-[10px] px-1.5 py-0.2 rounded-full">12</span>
                 </button>
                 <button data-tab="tab-catalog"
                     class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
                     <span>📚</span> <span>Automation & Script Catalog</span>
                     <span id="badgeCatalogCount"
-                        class="ml-1 bg-truist-teal text-white text-[10px] px-1.5 py-0.2 rounded-full">8</span>
+                        class="ml-1 bg-trust-teal text-white text-[10px] px-1.5 py-0.2 rounded-full">8</span>
                 </button>
                 <button data-tab="tab-crosspoll"
                     class="tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap">
@@ -177,11 +177,11 @@
     </header>
 
     <!-- QUICK STATS BAR -->
-    <section class="bg-white border-b border-truist-border py-2.5 px-4 sm:px-6 lg:px-8 shadow-sm">
+    <section class="bg-white border-b border-trust-border py-2.5 px-4 sm:px-6 lg:px-8 shadow-sm">
         <div class="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3 text-center text-xs">
-            <div class="bg-truist-lavender/60 p-2 rounded border border-truist-border/70">
-                <div class="text-truist-muted">Total Ideas Logged</div>
-                <div id="statTotalIdeas" class="text-base font-bold text-truist-purple">16</div>
+            <div class="bg-trust-lavender/60 p-2 rounded border border-trust-border/70">
+                <div class="text-trust-muted">Total Ideas Logged</div>
+                <div id="statTotalIdeas" class="text-base font-bold text-trust-purple">16</div>
             </div>
             <div class="bg-amber-50 p-2 rounded border border-amber-200">
                 <div class="text-amber-800">In Pipeline (Review/Dev)</div>
@@ -197,11 +197,11 @@
             </div>
             <div class="bg-purple-50 p-2 rounded border border-purple-200">
                 <div class="text-purple-800">Ann. Hours Saved</div>
-                <div id="statHoursSaved" class="text-base font-bold text-truist-purple">4,820 hrs</div>
+                <div id="statHoursSaved" class="text-base font-bold text-trust-purple">4,820 hrs</div>
             </div>
             <div class="bg-teal-50 p-2 rounded border border-teal-200">
                 <div class="text-teal-800">Cost Savings (Est.)</div>
-                <div id="statCostSavings" class="text-base font-bold text-truist-teal">$361,500</div>
+                <div id="statCostSavings" class="text-base font-bold text-trust-teal">$361,500</div>
             </div>
         </div>
     </section>
@@ -213,11 +213,11 @@
         <section id="tab-funnel" class="tab-content block space-y-4">
             <!-- Filter Toolbar -->
             <div
-                class="bg-white p-3.5 rounded-lg border border-truist-border shadow-sm flex flex-wrap items-center justify-between gap-3">
+                class="bg-white p-3.5 rounded-lg border border-trust-border shadow-sm flex flex-wrap items-center justify-between gap-3">
                 <div class="flex flex-wrap items-center gap-2">
-                    <label class="text-xs font-semibold text-truist-purple">Filter By:</label>
+                    <label class="text-xs font-semibold text-trust-purple">Filter By:</label>
                     <select id="funnelFilterVertical"
-                        class="text-xs border border-truist-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-truist-teal">
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-trust-teal">
                         <option value="ALL">All 4 Verticals</option>
                         <option value="V1">Consumer & Small Business Banking</option>
                         <option value="V2">Wholesale & Commercial Banking</option>
@@ -225,11 +225,11 @@
                         <option value="V4">Enterprise Core Platforms & Payments</option>
                     </select>
                     <select id="funnelFilterHorizontal"
-                        class="text-xs border border-truist-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-truist-teal">
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-trust-teal">
                         <option value="ALL">All Horizontals</option>
                     </select>
                     <select id="funnelFilterStatus"
-                        class="text-xs border border-truist-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-truist-teal">
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-1 focus:ring-trust-teal">
                         <option value="ALL">All Statuses</option>
                         <option value="Idea">1. Idea (Initial Toil Submission)</option>
                         <option value="Approved">2. Approved & Queued</option>
@@ -242,20 +242,20 @@
                 <div class="flex items-center gap-2">
                     <div class="relative">
                         <input type="text" id="funnelSearch" placeholder="Search ideas, apps, tickets..."
-                            class="text-xs border border-truist-border rounded pl-7 pr-3 py-1.5 w-52 sm:w-64 focus:outline-none focus:ring-1 focus:ring-truist-teal" />
-                        <svg class="w-3.5 h-3.5 text-truist-muted absolute left-2 top-2" fill="none"
+                            class="text-xs border border-trust-border rounded pl-7 pr-3 py-1.5 w-52 sm:w-64 focus:outline-none focus:ring-1 focus:ring-trust-teal" />
+                        <svg class="w-3.5 h-3.5 text-trust-muted absolute left-2 top-2" fill="none"
                             stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                         </svg>
                     </div>
                     <!-- View Toggle -->
-                    <div class="inline-flex rounded-md shadow-sm border border-truist-border bg-gray-50 p-0.5">
+                    <div class="inline-flex rounded-md shadow-sm border border-trust-border bg-gray-50 p-0.5">
                         <button id="btnViewBoard"
-                            class="px-2 py-1 text-xs rounded font-medium bg-truist-purple text-white shadow-xs">Board
+                            class="px-2 py-1 text-xs rounded font-medium bg-trust-purple text-white shadow-xs">Board
                             View</button>
                         <button id="btnViewTable"
-                            class="px-2 py-1 text-xs rounded font-medium text-truist-muted hover:text-truist-purple">Table
+                            class="px-2 py-1 text-xs rounded font-medium text-trust-muted hover:text-trust-purple">Table
                             View</button>
                     </div>
                 </div>
@@ -264,11 +264,11 @@
             <!-- KANBAN BOARD VIEW -->
             <div id="boardViewContainer" class="grid grid-cols-1 md:grid-cols-5 gap-3.5">
                 <!-- Col 1: Ideas -->
-                <div class="bg-gray-50 rounded-lg border border-truist-border p-3 flex flex-col min-h-[500px]">
-                    <div class="flex items-center justify-between pb-2 border-b border-truist-border mb-2.5">
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
                         <div class="flex items-center space-x-1.5">
                             <span class="w-2.5 h-2.5 rounded-full bg-purple-500"></span>
-                            <h3 class="text-xs font-bold text-truist-purple uppercase tracking-wider">1. Idea / Toil
+                            <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider">1. Idea / Toil
                             </h3>
                         </div>
                         <span id="count-Idea"
@@ -278,11 +278,11 @@
                 </div>
 
                 <!-- Col 2: Approved -->
-                <div class="bg-gray-50 rounded-lg border border-truist-border p-3 flex flex-col min-h-[500px]">
-                    <div class="flex items-center justify-between pb-2 border-b border-truist-border mb-2.5">
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
                         <div class="flex items-center space-x-1.5">
-                            <span class="w-2.5 h-2.5 rounded-full bg-truist-teal"></span>
-                            <h3 class="text-xs font-bold text-truist-teal uppercase tracking-wider">2. Approved</h3>
+                            <span class="w-2.5 h-2.5 rounded-full bg-trust-teal"></span>
+                            <h3 class="text-xs font-bold text-trust-teal uppercase tracking-wider">2. Approved</h3>
                         </div>
                         <span id="count-Approved"
                             class="text-[10px] bg-teal-100 text-teal-800 font-bold px-1.5 py-0.5 rounded-full">2</span>
@@ -291,8 +291,8 @@
                 </div>
 
                 <!-- Col 3: In Development -->
-                <div class="bg-gray-50 rounded-lg border border-truist-border p-3 flex flex-col min-h-[500px]">
-                    <div class="flex items-center justify-between pb-2 border-b border-truist-border mb-2.5">
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
                         <div class="flex items-center space-x-1.5">
                             <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
                             <h3 class="text-xs font-bold text-amber-700 uppercase tracking-wider">3. In Development</h3>
@@ -304,8 +304,8 @@
                 </div>
 
                 <!-- Col 4: In Production -->
-                <div class="bg-gray-50 rounded-lg border border-truist-border p-3 flex flex-col min-h-[500px]">
-                    <div class="flex items-center justify-between pb-2 border-b border-truist-border mb-2.5">
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
                         <div class="flex items-center space-x-1.5">
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
                             <h3 class="text-xs font-bold text-emerald-800 uppercase tracking-wider">4. In Production
@@ -318,8 +318,8 @@
                 </div>
 
                 <!-- Col 5: Rejected -->
-                <div class="bg-gray-50 rounded-lg border border-truist-border p-3 flex flex-col min-h-[500px]">
-                    <div class="flex items-center justify-between pb-2 border-b border-truist-border mb-2.5">
+                <div class="bg-gray-50 rounded-lg border border-trust-border p-3 flex flex-col min-h-[500px]">
+                    <div class="flex items-center justify-between pb-2 border-b border-trust-border mb-2.5">
                         <div class="flex items-center space-x-1.5">
                             <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
                             <h3 class="text-xs font-bold text-red-700 uppercase tracking-wider">5. Rejected</h3>
@@ -333,10 +333,10 @@
 
             <!-- TABLE VIEW (Hidden by default) -->
             <div id="tableViewContainer"
-                class="hidden bg-white rounded-lg border border-truist-border shadow-sm overflow-hidden">
+                class="hidden bg-white rounded-lg border border-trust-border shadow-sm overflow-hidden">
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-truist-border text-xs">
-                        <thead class="bg-truist-lavender text-truist-purple font-semibold">
+                    <table class="min-w-full divide-y divide-trust-border text-xs">
+                        <thead class="bg-trust-lavender text-trust-purple font-semibold">
                             <tr>
                                 <th class="px-3 py-2.5 text-left">ID & Title</th>
                                 <th class="px-3 py-2.5 text-left">Vertical / Horizontal</th>
@@ -359,19 +359,19 @@
         <!-- TAB 2: AUTOMATION & SCRIPT CATALOG (KNOWLEDGE HUB) -->
         <section id="tab-catalog" class="tab-content hidden space-y-4">
             <div
-                class="bg-white p-4 rounded-lg border border-truist-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div>
-                    <h2 class="text-sm font-bold text-truist-purple flex items-center">
+                    <h2 class="text-sm font-bold text-trust-purple flex items-center">
                         <span class="text-base mr-2">📚</span> Certified SRE Automations & Script Repository
                     </h2>
-                    <p class="text-xs text-truist-muted">
+                    <p class="text-xs text-trust-muted">
                         Knowledge base of vetted scripts, Ansible playbooks, and runbooks deployed in production. Each
                         includes tested GitLab links and adoption guidelines.
                     </p>
                 </div>
                 <div class="flex items-center gap-2">
                     <select id="catalogFilterTech"
-                        class="text-xs border border-truist-border rounded px-2.5 py-1.5 focus:outline-none">
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none">
                         <option value="ALL">All Technologies (Ansible, Python, Bash, TF)</option>
                         <option value="Ansible">Ansible Playbooks</option>
                         <option value="Python">Python Scripts</option>
@@ -380,7 +380,7 @@
                         <option value="Terraform">Terraform</option>
                     </select>
                     <input type="text" id="catalogSearch" placeholder="Search scripts or app..."
-                        class="text-xs border border-truist-border rounded px-3 py-1.5 w-48 sm:w-60 focus:outline-none" />
+                        class="text-xs border border-trust-border rounded px-3 py-1.5 w-48 sm:w-60 focus:outline-none" />
                 </div>
             </div>
 
@@ -392,24 +392,24 @@
 
         <!-- TAB 3: CROSS-POLLINATION (REUSABILITY & ADOPTION MATRIX) -->
         <section id="tab-crosspoll" class="tab-content hidden space-y-4">
-            <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
+            <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                     <div>
                         <div class="flex items-center space-x-2">
                             <span class="text-base">🔄</span>
-                            <h2 class="text-sm font-bold text-truist-purple">Cross-Pollination & Script Reusability
+                            <h2 class="text-sm font-bold text-trust-purple">Cross-Pollination & Script Reusability
                                 Matrix</h2>
                             <span
                                 class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Multi-Tenant
                                 Blueprints</span>
                         </div>
-                        <p class="text-xs text-truist-muted mt-1">
+                        <p class="text-xs text-trust-muted mt-1">
                             Track automations originated in one vertical or horizontal that have been adapted or
                             migrated across other teams. Eliminates duplicate toil and drives compounding ROI.
                         </p>
                     </div>
                     <button id="btnOpenMigrationModalFromMatrix"
-                        class="inline-flex items-center px-3.5 py-2 text-xs font-semibold rounded-md text-white bg-truist-teal hover:bg-truist-tealdark shadow-sm">
+                        class="inline-flex items-center px-3.5 py-2 text-xs font-semibold rounded-md text-white bg-trust-teal hover:bg-trust-tealdark shadow-sm">
                         <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
@@ -421,37 +421,37 @@
             <!-- Cross-Pollination Visual Showcase -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
                 <!-- Left: Summary Stats & High-Reusability Champions -->
-                <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm space-y-3">
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm space-y-3">
                     <h3
-                        class="text-xs font-bold text-truist-purple uppercase tracking-wider border-b border-truist-border pb-2">
+                        class="text-xs font-bold text-trust-purple uppercase tracking-wider border-b border-trust-border pb-2">
                         Reusability Impact Metrics
                     </h3>
                     <div class="space-y-2 text-xs">
-                        <div class="flex justify-between items-center p-2 bg-truist-lavender/50 rounded">
-                            <span class="text-truist-muted">Original Scripts Reused:</span>
-                            <span class="font-bold text-truist-purple">5 scripts</span>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Original Scripts Reused:</span>
+                            <span class="font-bold text-trust-purple">5 scripts</span>
                         </div>
-                        <div class="flex justify-between items-center p-2 bg-truist-lavender/50 rounded">
-                            <span class="text-truist-muted">Total Multi-Team Adoptions:</span>
-                            <span class="font-bold text-truist-teal">14 instances</span>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Total Multi-Team Adoptions:</span>
+                            <span class="font-bold text-trust-teal">14 instances</span>
                         </div>
-                        <div class="flex justify-between items-center p-2 bg-truist-lavender/50 rounded">
-                            <span class="text-truist-muted">Avoided Re-Development Time:</span>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Avoided Re-Development Time:</span>
                             <span class="font-bold text-emerald-700">~620 dev hours</span>
                         </div>
-                        <div class="flex justify-between items-center p-2 bg-truist-lavender/50 rounded">
-                            <span class="text-truist-muted">Multi-Tenant Reuse Ratio:</span>
-                            <span class="font-bold text-truist-purple">62.5%</span>
+                        <div class="flex justify-between items-center p-2 bg-trust-lavender/50 rounded">
+                            <span class="text-trust-muted">Multi-Tenant Reuse Ratio:</span>
+                            <span class="font-bold text-trust-purple">62.5%</span>
                         </div>
                     </div>
 
-                    <div class="mt-4 pt-3 border-t border-truist-border">
-                        <h4 class="text-xs font-bold text-truist-purple mb-2">How Cross-Pollination Works:</h4>
-                        <ol class="text-[11px] text-truist-muted space-y-1.5 list-decimal list-inside">
-                            <li>An SRE builds a script for <span class="font-medium text-truist-purple">Horizontal
+                    <div class="mt-4 pt-3 border-t border-trust-border">
+                        <h4 class="text-xs font-bold text-trust-purple mb-2">How Cross-Pollination Works:</h4>
+                        <ol class="text-[11px] text-trust-muted space-y-1.5 list-decimal list-inside">
+                            <li>An SRE builds a script for <span class="font-medium text-trust-purple">Horizontal
                                     1</span>.</li>
                             <li>Engineers in other verticals discover it in the catalog.</li>
-                            <li>They submit a <span class="font-medium text-truist-teal">"Migration & Adoption
+                            <li>They submit a <span class="font-medium text-trust-teal">"Migration & Adoption
                                     Request"</span>.</li>
                             <li>A new linked card enters the Idea Funnel as an approved derivative backlog item.</li>
                             <li>Variables & secrets are parametrized for the new target app.</li>
@@ -460,13 +460,13 @@
                 </div>
 
                 <!-- Right: Adoption Matrix Table -->
-                <div class="lg:col-span-2 bg-white p-4 rounded-lg border border-truist-border shadow-sm">
-                    <h3 class="text-xs font-bold text-truist-purple uppercase tracking-wider mb-3">
+                <div class="lg:col-span-2 bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider mb-3">
                         Cross-Vertical Adoption Map
                     </h3>
                     <div class="overflow-x-auto">
-                        <table class="min-w-full text-xs divide-y divide-truist-border">
-                            <thead class="bg-truist-lavender text-truist-purple font-semibold">
+                        <table class="min-w-full text-xs divide-y divide-trust-border">
+                            <thead class="bg-trust-lavender text-trust-purple font-semibold">
                                 <tr>
                                     <th class="px-3 py-2 text-left">Automation Script</th>
                                     <th class="px-3 py-2 text-left">Origin Team (Vertical / Horiz)</th>
@@ -486,28 +486,28 @@
         <!-- TAB 4: DATEWISE MEETING NOTES & DECISION LOG -->
         <section id="tab-meetings" class="tab-content hidden space-y-4">
             <div
-                class="bg-white p-4 rounded-lg border border-truist-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div>
-                    <h2 class="text-sm font-bold text-truist-purple flex items-center">
+                    <h2 class="text-sm font-bold text-trust-purple flex items-center">
                         <span class="text-base mr-2">📅</span> Datewise SRE Automation Review Notes & Decisions
                     </h2>
-                    <p class="text-xs text-truist-muted">
+                    <p class="text-xs text-trust-muted">
                         Chronological audit trail of all architectural reviews, status updates, approvals, rejections,
                         and roadblock dissolutions discussed during automation syncs.
                     </p>
                 </div>
                 <div class="flex items-center gap-2">
                     <select id="meetingFilterIdea"
-                        class="text-xs border border-truist-border rounded px-2.5 py-1.5 focus:outline-none">
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none">
                         <option value="ALL">All Ideas & Topics</option>
                     </select>
                 </div>
             </div>
 
             <!-- Chronological Timeline Stream -->
-            <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
+            <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
                 <div id="timelineContainer"
-                    class="space-y-4 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-truist-border before:z-0">
+                    class="space-y-4 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-trust-border before:z-0">
                     <!-- Populated dynamically via JS -->
                 </div>
             </div>
@@ -517,30 +517,30 @@
         <section id="tab-report" class="tab-content hidden space-y-4">
             <!-- Report Header & Controls -->
             <div
-                class="bg-white p-4 rounded-lg border border-truist-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div>
                     <div class="flex items-center space-x-2">
                         <span class="text-base">📊</span>
-                        <h2 class="text-sm font-bold text-truist-purple">Annual SRE Productivity & Toil Reduction Report
+                        <h2 class="text-sm font-bold text-trust-purple">Annual SRE Productivity & Toil Reduction Report
                         </h2>
                         <span
                             class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Executive
                             Audit</span>
                     </div>
-                    <p class="text-xs text-truist-muted mt-1">
+                    <p class="text-xs text-trust-muted mt-1">
                         Quantified productivity improvements, engineer hours liberated from toil, MTTR impact, and cost
                         avoidance by vertical and individual application.
                     </p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <label class="text-xs font-semibold text-truist-purple">Fiscal Year:</label>
+                    <label class="text-xs font-semibold text-trust-purple">Fiscal Year:</label>
                     <select id="reportYearSelect"
-                        class="text-xs border border-truist-border rounded px-2.5 py-1.5 focus:outline-none">
+                        class="text-xs border border-trust-border rounded px-2.5 py-1.5 focus:outline-none">
                         <option value="2026">FY 2026 (YTD)</option>
                         <option value="2025">FY 2025 (Full Year)</option>
                     </select>
                     <button id="btnExportCSV"
-                        class="inline-flex items-center px-3 py-1.5 border border-truist-teal text-xs font-semibold rounded text-truist-teal bg-white hover:bg-truist-teallight">
+                        class="inline-flex items-center px-3 py-1.5 border border-trust-teal text-xs font-semibold rounded text-trust-teal bg-white hover:bg-trust-teallight">
                         <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -552,8 +552,8 @@
 
             <!-- KPI Executive Summary Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-gradient-to-br from-truist-purple to-truist-dark text-white p-4 rounded-lg shadow-sm">
-                    <div class="text-[11px] uppercase tracking-wider text-truist-teallight font-medium">Total
+                <div class="bg-gradient-to-br from-trust-purple to-trust-dark text-white p-4 rounded-lg shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-trust-teallight font-medium">Total
                         Engineering Hours Saved</div>
                     <div class="text-2xl font-bold mt-1" id="reportMetricHours">4,820 hrs</div>
                     <div class="text-[10px] text-gray-300 mt-1 flex items-center">
@@ -561,7 +561,7 @@
                     </div>
                 </div>
 
-                <div class="bg-gradient-to-br from-truist-teal to-truist-tealdark text-white p-4 rounded-lg shadow-sm">
+                <div class="bg-gradient-to-br from-trust-teal to-trust-tealdark text-white p-4 rounded-lg shadow-sm">
                     <div class="text-[11px] uppercase tracking-wider text-teal-100 font-medium">Estimated Financial Cost
                         Avoidance</div>
                     <div class="text-2xl font-bold mt-1" id="reportMetricCost">$361,500</div>
@@ -570,17 +570,17 @@
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
-                    <div class="text-[11px] uppercase tracking-wider text-truist-muted font-medium">Production
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-trust-muted font-medium">Production
                         Automations Active</div>
-                    <div class="text-2xl font-bold text-truist-purple mt-1" id="reportMetricActiveCount">8 Scripts</div>
-                    <div class="text-[10px] text-truist-muted mt-1">
+                    <div class="text-2xl font-bold text-trust-purple mt-1" id="reportMetricActiveCount">8 Scripts</div>
+                    <div class="text-[10px] text-trust-muted mt-1">
                         Across 14 discrete banking applications
                     </div>
                 </div>
 
-                <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
-                    <div class="text-[11px] uppercase tracking-wider text-truist-muted font-medium">Average MTTR
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <div class="text-[11px] uppercase tracking-wider text-trust-muted font-medium">Average MTTR
                         Improvement</div>
                     <div class="text-2xl font-bold text-emerald-700 mt-1">-54 mins</div>
                     <div class="text-[10px] text-emerald-600 mt-1 font-semibold">
@@ -592,8 +592,8 @@
             <!-- Charts Row -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <!-- Chart 1: Hours Saved by Vertical & App -->
-                <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
-                    <h3 class="text-xs font-bold text-truist-purple uppercase tracking-wider mb-2">
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider mb-2">
                         Hours Saved by Vertical (Monthly vs Cumulative)
                     </h3>
                     <div class="relative h-72">
@@ -602,8 +602,8 @@
                 </div>
 
                 <!-- Chart 2: Toil Breakdown by Technology Stack -->
-                <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
-                    <h3 class="text-xs font-bold text-truist-purple uppercase tracking-wider mb-2">
+                <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider mb-2">
                         Automation Tech Stack Distribution
                     </h3>
                     <div class="relative h-72">
@@ -613,16 +613,16 @@
             </div>
 
             <!-- App-by-App Productivity Breakdown Table -->
-            <div class="bg-white p-4 rounded-lg border border-truist-border shadow-sm">
+            <div class="bg-white p-4 rounded-lg border border-trust-border shadow-sm">
                 <div class="flex items-center justify-between mb-3">
-                    <h3 class="text-xs font-bold text-truist-purple uppercase tracking-wider">
+                    <h3 class="text-xs font-bold text-trust-purple uppercase tracking-wider">
                         Detailed Application-Level Productivity Scorecard
                     </h3>
-                    <span class="text-[11px] text-truist-muted">Sorted by highest hours saved</span>
+                    <span class="text-[11px] text-trust-muted">Sorted by highest hours saved</span>
                 </div>
                 <div class="overflow-x-auto">
-                    <table class="min-w-full text-xs divide-y divide-truist-border">
-                        <thead class="bg-truist-lavender text-truist-purple font-semibold">
+                    <table class="min-w-full text-xs divide-y divide-trust-border">
+                        <thead class="bg-trust-lavender text-trust-purple font-semibold">
                             <tr>
                                 <th class="px-3 py-2 text-left">Application Name</th>
                                 <th class="px-3 py-2 text-left">Vertical & Horizontal</th>
@@ -645,19 +645,19 @@
         <!-- TAB 6: VERTICALS & HORIZONTALS MANAGEMENT -->
         <section id="tab-org" class="tab-content hidden space-y-4">
             <div
-                class="bg-white p-4 rounded-lg border border-truist-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
+                class="bg-white p-4 rounded-lg border border-trust-border shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div>
-                    <h2 class="text-sm font-bold text-truist-purple flex items-center">
+                    <h2 class="text-sm font-bold text-trust-purple flex items-center">
                         <span class="text-base mr-2">🏢</span> Enterprise Organizational Matrix (Verticals &
                         Horizontals)
                     </h2>
-                    <p class="text-xs text-truist-muted">
+                    <p class="text-xs text-trust-muted">
                         Configured structure supporting 4 core verticals with expandable horizontal queues. New
                         verticals or horizontal queues can be registered as the org scales.
                     </p>
                 </div>
                 <button id="btnAddVerticalModal"
-                    class="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded text-white bg-truist-purple hover:bg-truist-dark">
+                    class="inline-flex items-center px-3 py-1.5 text-xs font-semibold rounded text-white bg-trust-purple hover:bg-trust-dark">
                     + Add New Vertical / Horizontal
                 </button>
             </div>
@@ -671,13 +671,13 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-truist-dark text-gray-400 text-xs py-4 border-t border-truist-vibrant mt-auto">
+    <footer class="bg-trust-dark text-gray-400 text-xs py-4 border-t border-trust-vibrant mt-auto">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
             <div class="flex items-center space-x-2">
                 <span
-                    class="w-4 h-4 rounded bg-truist-teal text-white flex items-center justify-center font-bold text-[9px]">T</span>
-                <span class="text-gray-300 font-semibold">Truist Financial Technology & Operations</span>
+                    class="w-4 h-4 rounded bg-trust-teal text-white flex items-center justify-center font-bold text-[9px]">T</span>
+                <span class="text-gray-300 font-semibold">trust Financial Technology & Operations</span>
                 <span class="text-gray-500">| SRE & Production Engineering Practice</span>
             </div>
             <div>
@@ -691,13 +691,13 @@
     <!-- MODAL 1: SUBMIT NEW TOIL / AUTOMATION IDEA -->
     <div id="modalNewIdea" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
         <div
-            class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scroll border border-truist-border">
-            <div class="bg-truist-purple text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl">
+            class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scroll border border-trust-border">
+            <div class="bg-trust-purple text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl">
                 <div class="flex items-center space-x-2">
                     <span class="text-lg">💡</span>
                     <div>
                         <h3 class="text-sm font-bold">Submit New SRE Toil / Automation Idea</h3>
-                        <p class="text-[11px] text-truist-teallight">Enter your manual pain point or proposed automation
+                        <p class="text-[11px] text-trust-teallight">Enter your manual pain point or proposed automation
                             into the funnel</p>
                     </div>
                 </div>
@@ -707,30 +707,30 @@
 
             <form id="formNewIdea" class="p-5 space-y-3.5 text-xs">
                 <div>
-                    <label class="block font-semibold text-truist-purple mb-1">Idea / Automation Title *</label>
+                    <label class="block font-semibold text-trust-purple mb-1">Idea / Automation Title *</label>
                     <input type="text" id="newIdeaTitle" required
                         placeholder="e.g. Automated Kafka Consumer Lag Remediation & Rebalancing"
-                        class="w-full border border-truist-border rounded px-3 py-2 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Submitter Name & Role *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Submitter Name & Role *</label>
                         <input type="text" id="newIdeaSubmitter" required placeholder="e.g. Marcus Vance (Staff SRE)"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                     </div>
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Submitter Email *</label>
-                        <input type="email" id="newIdeaEmail" required placeholder="marcus.vance@truist.com"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                        <label class="block font-semibold text-trust-purple mb-1">Submitter Email *</label>
+                        <input type="email" id="newIdeaEmail" required placeholder="marcus.vance@trust.com"
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Target Vertical *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Target Vertical *</label>
                         <select id="newIdeaVertical" required
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                             <option value="">Select Vertical...</option>
                             <option value="V1">Consumer & Small Business Banking</option>
                             <option value="V2">Wholesale & Commercial Banking</option>
@@ -739,9 +739,9 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Target Horizontal Queue *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Target Horizontal Queue *</label>
                         <select id="newIdeaHorizontal" required
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                             <option value="">Select Horizontal...</option>
                         </select>
                     </div>
@@ -749,15 +749,15 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Target Application(s) *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Target Application(s) *</label>
                         <input type="text" id="newIdeaApp" required
                             placeholder="e.g. Digital Banking Gateway / Payments API"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                     </div>
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Proposed Tech Stack *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Proposed Tech Stack *</label>
                         <select id="newIdeaTech" required
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                             <option value="Ansible">Ansible Playbook</option>
                             <option value="Python">Python Script / Daemon</option>
                             <option value="Bash">Bash / Shell Script</option>
@@ -770,17 +770,17 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Current Manual Toil (Hours/Month)
+                        <label class="block font-semibold text-trust-purple mb-1">Current Manual Toil (Hours/Month)
                             *</label>
                         <input type="number" id="newIdeaToilHours" required min="1" max="1000" placeholder="e.g. 24"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
-                        <span class="text-[10px] text-truist-muted">Monthly engineer hours spent running manual
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
+                        <span class="text-[10px] text-trust-muted">Monthly engineer hours spent running manual
                             runbook</span>
                     </div>
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Execution Frequency</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Execution Frequency</label>
                         <select id="newIdeaFreq"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                             <option value="Daily automated cron">Daily automated cron</option>
                             <option value="Weekly maintenance window">Weekly maintenance window</option>
                             <option value="On-demand incident response">On-demand incident response</option>
@@ -791,36 +791,36 @@
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-truist-purple mb-1">Problem / Manual Toil Description
+                    <label class="block font-semibold text-trust-purple mb-1">Problem / Manual Toil Description
                         *</label>
                     <textarea id="newIdeaDesc" rows="3" required
                         placeholder="Describe the manual pain point, incident alerts, or repetitive commands currently executed..."
-                        class="w-full border border-truist-border rounded px-3 py-2 focus:ring-1 focus:ring-truist-teal focus:outline-none"></textarea>
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none"></textarea>
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-truist-purple mb-1">GitLab Repository URL (Optional at Idea
+                    <label class="block font-semibold text-trust-purple mb-1">GitLab Repository URL (Optional at Idea
                         phase)</label>
                     <input type="url" id="newIdeaGitLab"
-                        placeholder="https://gitlab.corp.truist.com/sre-automations/kafka-lag-rebalancer"
-                        class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                        placeholder="https://gitlab.corp.trust.com/sre-automations/kafka-lag-rebalancer"
+                        class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                 </div>
 
                 <div
-                    class="bg-truist-lavender p-3 rounded-lg border border-truist-border/70 flex items-start space-x-2">
+                    class="bg-trust-lavender p-3 rounded-lg border border-trust-border/70 flex items-start space-x-2">
                     <input type="checkbox" id="newIdeaCrossPollCheck"
-                        class="mt-0.5 rounded text-truist-teal focus:ring-truist-teal" />
-                    <label for="newIdeaCrossPollCheck" class="text-[11px] text-truist-purple">
+                        class="mt-0.5 rounded text-trust-teal focus:ring-trust-teal" />
+                    <label for="newIdeaCrossPollCheck" class="text-[11px] text-trust-purple">
                         <span class="font-bold">Potential for Cross-Pollination?</span> Check this if this script can be
                         parametrized and reused across other horizontals or banking apps in the bank.
                     </label>
                 </div>
 
-                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-truist-border">
+                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-trust-border">
                     <button type="button" id="btnCancelNewIdea"
                         class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50 font-medium">Cancel</button>
                     <button type="submit"
-                        class="px-4 py-2 bg-truist-teal text-white rounded font-bold hover:bg-truist-tealdark shadow-sm">Submit
+                        class="px-4 py-2 bg-trust-teal text-white rounded font-bold hover:bg-trust-tealdark shadow-sm">Submit
                         to Idea Funnel</button>
                 </div>
             </form>
@@ -830,8 +830,8 @@
     <!-- MODAL 2: REQUEST ADOPTION / MIGRATION OF EXISTING SCRIPT -->
     <div id="modalMigration" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
         <div
-            class="bg-white rounded-xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto custom-scroll border border-truist-border">
-            <div class="bg-truist-teal text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl">
+            class="bg-white rounded-xl shadow-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto custom-scroll border border-trust-border">
+            <div class="bg-trust-teal text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl">
                 <div class="flex items-center space-x-2">
                     <span class="text-lg">🔄</span>
                     <div>
@@ -846,24 +846,24 @@
 
             <form id="formMigration" class="p-5 space-y-3.5 text-xs">
                 <div>
-                    <label class="block font-semibold text-truist-purple mb-1">Select Existing Automation from Catalog
+                    <label class="block font-semibold text-trust-purple mb-1">Select Existing Automation from Catalog
                         *</label>
                     <select id="migSourceScript" required
-                        class="w-full border border-truist-border rounded px-3 py-2 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                         <!-- Populated with production scripts -->
                     </select>
                 </div>
 
-                <div class="p-2.5 bg-gray-50 rounded border border-truist-border text-[11px] text-truist-muted"
+                <div class="p-2.5 bg-gray-50 rounded border border-trust-border text-[11px] text-trust-muted"
                     id="migSourceDetails">
                     <!-- Shows selected script's origin and GitLab link -->
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Requesting Vertical *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Requesting Vertical *</label>
                         <select id="migTargetVertical" required
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                             <option value="">Select Vertical...</option>
                             <option value="V1">Consumer & Small Business Banking</option>
                             <option value="V2">Wholesale & Commercial Banking</option>
@@ -872,9 +872,9 @@
                         </select>
                     </div>
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Requesting Horizontal Queue *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Requesting Horizontal Queue *</label>
                         <select id="migTargetHorizontal" required
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none">
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none">
                             <option value="">Select Horizontal...</option>
                         </select>
                     </div>
@@ -882,37 +882,37 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Your Target Application *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Your Target Application *</label>
                         <input type="text" id="migTargetApp" required placeholder="e.g. Commercial Loan Approval Portal"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                     </div>
                     <div>
-                        <label class="block font-semibold text-truist-purple mb-1">Requestor Name & Role *</label>
+                        <label class="block font-semibold text-trust-purple mb-1">Requestor Name & Role *</label>
                         <input type="text" id="migRequestor" required placeholder="e.g. Priya Sharma (Lead Support Eng)"
-                            class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                            class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                     </div>
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-truist-purple mb-1">Toil Hours Spent on Your App
+                    <label class="block font-semibold text-trust-purple mb-1">Toil Hours Spent on Your App
                         (Hours/Month) *</label>
                     <input type="number" id="migToilHours" required min="1" placeholder="e.g. 18"
-                        class="w-full border border-truist-border rounded px-3 py-1.5 focus:ring-1 focus:ring-truist-teal focus:outline-none" />
+                        class="w-full border border-trust-border rounded px-3 py-1.5 focus:ring-1 focus:ring-trust-teal focus:outline-none" />
                 </div>
 
                 <div>
-                    <label class="block font-semibold text-truist-purple mb-1">Configuration / Migration
+                    <label class="block font-semibold text-trust-purple mb-1">Configuration / Migration
                         Specifics</label>
                     <textarea id="migNotes" rows="3"
                         placeholder="Specify any unique environment variables, host groups, credentials (CyberArk vault), or schema differences needed..."
-                        class="w-full border border-truist-border rounded px-3 py-2 focus:ring-1 focus:ring-truist-teal focus:outline-none"></textarea>
+                        class="w-full border border-trust-border rounded px-3 py-2 focus:ring-1 focus:ring-trust-teal focus:outline-none"></textarea>
                 </div>
 
-                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-truist-border">
+                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-trust-border">
                     <button type="button" id="btnCancelMigration"
                         class="px-4 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-50 font-medium">Cancel</button>
                     <button type="submit"
-                        class="px-4 py-2 bg-truist-teal text-white rounded font-bold hover:bg-truist-tealdark shadow-sm">Submit
+                        class="px-4 py-2 bg-trust-teal text-white rounded font-bold hover:bg-trust-tealdark shadow-sm">Submit
                         Adoption Ticket</button>
                 </div>
             </form>
@@ -922,10 +922,10 @@
     <!-- MODAL 3: IDEA DETAILS, STATUS WORKFLOW, & DATEWISE MEETING NOTES -->
     <div id="modalIdeaDetail" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-3">
         <div
-            class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[92vh] overflow-y-auto custom-scroll border border-truist-border">
+            class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[92vh] overflow-y-auto custom-scroll border border-trust-border">
             <!-- Modal Header -->
             <div
-                class="bg-truist-purple text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl sticky top-0 z-10">
+                class="bg-trust-purple text-white px-5 py-3.5 flex items-center justify-between rounded-t-xl sticky top-0 z-10">
                 <div class="flex items-center space-x-2">
                     <span id="detailBadgeStatus"
                         class="text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Status</span>
@@ -938,21 +938,21 @@
             <div class="p-5 space-y-4 text-xs">
                 <!-- Top Metadata Grid -->
                 <div
-                    class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 bg-truist-lavender/50 rounded-lg border border-truist-border">
+                    class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3 bg-trust-lavender/50 rounded-lg border border-trust-border">
                     <div>
-                        <div class="text-truist-muted text-[10px] uppercase font-bold">Vertical / Team</div>
-                        <div id="detailVertical" class="font-semibold text-truist-purple mt-0.5">-</div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Vertical / Team</div>
+                        <div id="detailVertical" class="font-semibold text-trust-purple mt-0.5">-</div>
                     </div>
                     <div>
-                        <div class="text-truist-muted text-[10px] uppercase font-bold">Horizontal Queue</div>
-                        <div id="detailHorizontal" class="font-semibold text-truist-purple mt-0.5">-</div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Horizontal Queue</div>
+                        <div id="detailHorizontal" class="font-semibold text-trust-purple mt-0.5">-</div>
                     </div>
                     <div>
-                        <div class="text-truist-muted text-[10px] uppercase font-bold">Target Application</div>
-                        <div id="detailApp" class="font-semibold text-truist-teal mt-0.5">-</div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Target Application</div>
+                        <div id="detailApp" class="font-semibold text-trust-teal mt-0.5">-</div>
                     </div>
                     <div>
-                        <div class="text-truist-muted text-[10px] uppercase font-bold">Monthly Toil</div>
+                        <div class="text-trust-muted text-[10px] uppercase font-bold">Monthly Toil</div>
                         <div id="detailToilHours" class="font-bold text-amber-700 mt-0.5">-</div>
                     </div>
                 </div>
@@ -960,7 +960,7 @@
                 <!-- Description & Git Repo Section -->
                 <div class="space-y-2">
                     <div>
-                        <h4 class="font-bold text-truist-purple">Problem Statement & Toil Context</h4>
+                        <h4 class="font-bold text-trust-purple">Problem Statement & Toil Context</h4>
                         <p id="detailDesc"
                             class="text-gray-700 bg-gray-50 p-2.5 rounded border border-gray-200 mt-1 leading-relaxed">-
                         </p>
@@ -968,36 +968,36 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                         <div>
-                            <label class="block font-bold text-truist-purple mb-0.5">GitLab Repository Link</label>
+                            <label class="block font-bold text-trust-purple mb-0.5">GitLab Repository Link</label>
                             <div class="flex items-center space-x-1.5">
                                 <input type="text" id="detailGitLabInput"
-                                    class="w-full border border-truist-border rounded px-2.5 py-1 text-xs focus:ring-1 focus:ring-truist-teal" />
+                                    class="w-full border border-trust-border rounded px-2.5 py-1 text-xs focus:ring-1 focus:ring-trust-teal" />
                                 <a id="detailGitLabLink" href="#" target="_blank"
-                                    class="px-2 py-1 bg-truist-purple text-white rounded text-xs font-semibold hover:bg-truist-vibrant flex items-center whitespace-nowrap">
+                                    class="px-2 py-1 bg-trust-purple text-white rounded text-xs font-semibold hover:bg-trust-vibrant flex items-center whitespace-nowrap">
                                     <span>Open ↗</span>
                                 </a>
                             </div>
                         </div>
                         <div>
-                            <label class="block font-bold text-truist-purple mb-0.5">Ansible / Playbook Tag or
+                            <label class="block font-bold text-trust-purple mb-0.5">Ansible / Playbook Tag or
                                 Path</label>
                             <input type="text" id="detailPlaybookTag" placeholder="e.g. playbooks/rebalance_kafka.yml"
-                                class="w-full border border-truist-border rounded px-2.5 py-1 text-xs focus:ring-1 focus:ring-truist-teal" />
+                                class="w-full border border-trust-border rounded px-2.5 py-1 text-xs focus:ring-1 focus:ring-trust-teal" />
                         </div>
                     </div>
                 </div>
 
                 <!-- LIFECYCLE PHASE & REJECTION CONTROLS -->
-                <div class="p-3 bg-gray-50 rounded-lg border border-truist-border space-y-2">
+                <div class="p-3 bg-gray-50 rounded-lg border border-trust-border space-y-2">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                         <div>
-                            <label class="font-bold text-truist-purple">Update Lifecycle Phase:</label>
-                            <p class="text-[10px] text-truist-muted">Advance idea from initial toil submission to
+                            <label class="font-bold text-trust-purple">Update Lifecycle Phase:</label>
+                            <p class="text-[10px] text-trust-muted">Advance idea from initial toil submission to
                                 approval, dev, or production</p>
                         </div>
                         <div class="flex items-center space-x-2">
                             <select id="detailStatusSelect"
-                                class="border border-truist-border rounded px-2.5 py-1 font-semibold text-xs focus:ring-1 focus:ring-truist-teal">
+                                class="border border-trust-border rounded px-2.5 py-1 font-semibold text-xs focus:ring-1 focus:ring-trust-teal">
                                 <option value="Idea">1. Idea (Initial Toil Submission)</option>
                                 <option value="Approved">2. Approved & Queued</option>
                                 <option value="In Development">3. In Development</option>
@@ -1005,7 +1005,7 @@
                                 <option value="Rejected">5. Rejected</option>
                             </select>
                             <button id="btnSaveStatusChange"
-                                class="px-3 py-1 bg-truist-teal text-white rounded font-bold hover:bg-truist-tealdark text-xs">
+                                class="px-3 py-1 bg-trust-teal text-white rounded font-bold hover:bg-trust-tealdark text-xs">
                                 Save Phase
                             </button>
                         </div>
@@ -1023,11 +1023,11 @@
                 <!-- CROSS-POLLINATION / ADOPTION HISTORY -->
                 <div class="p-3 bg-purple-50/70 rounded-lg border border-purple-200 space-y-1.5">
                     <div class="flex items-center justify-between">
-                        <h4 class="font-bold text-truist-purple flex items-center">
+                        <h4 class="font-bold text-trust-purple flex items-center">
                             <span class="mr-1.5">🔄</span> Cross-Pollination & Adoptions for this Script
                         </h4>
                         <button id="btnTriggerMigrationFromDetail"
-                            class="text-[11px] text-truist-teal font-bold hover:underline">
+                            class="text-[11px] text-trust-teal font-bold hover:underline">
                             + Request Migration for another App
                         </button>
                     </div>
@@ -1038,12 +1038,12 @@
 
                 <!-- DATEWISE MEETING NOTES & UPDATES -->
                 <div class="space-y-3 pt-2">
-                    <div class="flex items-center justify-between border-b border-truist-border pb-1.5">
+                    <div class="flex items-center justify-between border-b border-trust-border pb-1.5">
                         <div>
-                            <h4 class="font-bold text-truist-purple flex items-center">
+                            <h4 class="font-bold text-trust-purple flex items-center">
                                 <span class="mr-1.5">📝</span> Datewise Meeting Notes & Architectural Reviews
                             </h4>
-                            <p class="text-[10px] text-truist-muted">All discussions from weekly SRE automation review
+                            <p class="text-[10px] text-trust-muted">All discussions from weekly SRE automation review
                                 meetings</p>
                         </div>
                     </div>
@@ -1054,34 +1054,34 @@
                     </div>
 
                     <!-- Inline Form to Add New Meeting Note -->
-                    <div class="bg-truist-lavender/60 p-3 rounded-lg border border-truist-border space-y-2">
-                        <h5 class="font-bold text-truist-purple text-xs flex items-center">
+                    <div class="bg-trust-lavender/60 p-3 rounded-lg border border-trust-border space-y-2">
+                        <h5 class="font-bold text-trust-purple text-xs flex items-center">
                             <span>+ Record New Meeting Note / Review Update</span>
                         </h5>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             <div>
-                                <label class="block text-[10px] font-semibold text-truist-muted mb-0.5">Meeting Date
+                                <label class="block text-[10px] font-semibold text-trust-muted mb-0.5">Meeting Date
                                     *</label>
                                 <input type="date" id="newNoteDate"
-                                    class="w-full border border-truist-border rounded px-2 py-1 text-xs" />
+                                    class="w-full border border-trust-border rounded px-2 py-1 text-xs" />
                             </div>
                             <div>
-                                <label class="block text-[10px] font-semibold text-truist-muted mb-0.5">Reviewer /
+                                <label class="block text-[10px] font-semibold text-trust-muted mb-0.5">Reviewer /
                                     Meeting Chair *</label>
                                 <input type="text" id="newNoteAuthor" placeholder="e.g. SRE Architecture Guild"
-                                    class="w-full border border-truist-border rounded px-2 py-1 text-xs" />
+                                    class="w-full border border-trust-border rounded px-2 py-1 text-xs" />
                             </div>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-semibold text-truist-muted mb-0.5">Discussion Notes &
+                            <label class="block text-[10px] font-semibold text-trust-muted mb-0.5">Discussion Notes &
                                 Decisions *</label>
                             <textarea id="newNoteText" rows="2"
                                 placeholder="Record feedback, approval rationale, blocker resolutions, or next steps agreed during meeting..."
-                                class="w-full border border-truist-border rounded px-2.5 py-1.5 text-xs focus:ring-1 focus:ring-truist-teal"></textarea>
+                                class="w-full border border-trust-border rounded px-2.5 py-1.5 text-xs focus:ring-1 focus:ring-trust-teal"></textarea>
                         </div>
                         <div class="flex justify-end">
                             <button type="button" id="btnAddMeetingNote"
-                                class="px-3 py-1 bg-truist-purple text-white rounded font-bold hover:bg-truist-dark text-xs shadow-xs">
+                                class="px-3 py-1 bg-trust-purple text-white rounded font-bold hover:bg-trust-dark text-xs shadow-xs">
                                 Log Meeting Note
                             </button>
                         </div>
@@ -1094,7 +1094,7 @@
 
     <!-- TOAST NOTIFICATION -->
     <div id="toastNotification"
-        class="fixed bottom-4 right-4 bg-truist-purple text-white px-4 py-2.5 rounded-lg shadow-xl text-xs flex items-center space-x-2 transform translate-y-20 transition-all duration-300 z-50 border border-truist-teal">
+        class="fixed bottom-4 right-4 bg-trust-purple text-white px-4 py-2.5 rounded-lg shadow-xl text-xs flex items-center space-x-2 transform translate-y-20 transition-all duration-300 z-50 border border-trust-teal">
         <span id="toastIcon">✓</span>
         <span id="toastMessage">Action completed successfully</span>
     </div>
@@ -1159,13 +1159,13 @@
                 id: "AUTO-101",
                 title: "SSL/TLS Certificate Auto-Rotator & Vault Sync",
                 submitter: "David Chen (Staff SRE)",
-                submitterEmail: "david.chen@truist.com",
+                submitterEmail: "david.chen@trust.com",
                 verticalId: "V4",
                 horizontalId: "H4_3",
                 app: "Enterprise API Gateway (Apigee)",
                 tech: "Ansible",
                 playbookTag: "playbooks/pki/cert_rotate_gateway.yml",
-                gitlabUrl: "https://gitlab.corp.truist.com/sre-core/ansible-pki-rotator",
+                gitlabUrl: "https://gitlab.corp.trust.com/sre-core/ansible-pki-rotator",
                 status: "In Production",
                 toilHoursMonth: 35,
                 freq: "Continuous event-driven daemon",
@@ -1188,13 +1188,13 @@
                 id: "AUTO-102",
                 title: "Kafka Consumer Lag Self-Healing & Partition Rebalancer",
                 submitter: "Marcus Vance (SRE Lead)",
-                submitterEmail: "marcus.vance@truist.com",
+                submitterEmail: "marcus.vance@trust.com",
                 verticalId: "V1",
                 horizontalId: "H1_1",
                 app: "Digital Banking Event Bus",
                 tech: "Python",
                 playbookTag: "scripts/kafka/rebalance_monitor.py",
-                gitlabUrl: "https://gitlab.corp.truist.com/digital-banking/kafka-lag-healer",
+                gitlabUrl: "https://gitlab.corp.trust.com/digital-banking/kafka-lag-healer",
                 status: "In Production",
                 toilHoursMonth: 48,
                 freq: "Continuous event-driven daemon",
@@ -1215,13 +1215,13 @@
                 id: "AUTO-103",
                 title: "Oracle Tablespace Auto-Extender & Partition Pruner",
                 submitter: "Sanjay Gupta (Database SRE)",
-                submitterEmail: "sanjay.gupta@truist.com",
+                submitterEmail: "sanjay.gupta@trust.com",
                 verticalId: "V2",
                 horizontalId: "H2_1",
                 app: "Wholesale Treasury Ledger DB",
                 tech: "Ansible",
                 playbookTag: "playbooks/dba/oracle_tablespace_guard.yml",
-                gitlabUrl: "https://gitlab.corp.truist.com/db-sre/oracle-tablespace-ansible",
+                gitlabUrl: "https://gitlab.corp.trust.com/db-sre/oracle-tablespace-ansible",
                 status: "In Production",
                 toilHoursMonth: 28,
                 freq: "Daily automated cron",
@@ -1241,13 +1241,13 @@
                 id: "AUTO-104",
                 title: "Kubernetes Pod OOMKilled Self-Healing & Memory Scaler",
                 submitter: "Chloe Martin (Cloud Reliability Eng)",
-                submitterEmail: "chloe.martin@truist.com",
+                submitterEmail: "chloe.martin@trust.com",
                 verticalId: "V4",
                 horizontalId: "H4_4",
                 app: "Enterprise OpenShift / EKS Clusters",
                 tech: "Go",
                 playbookTag: "k8s-operators/memory-guardian-v1.yaml",
-                gitlabUrl: "https://gitlab.corp.truist.com/cloud-platform/memory-guardian-operator",
+                gitlabUrl: "https://gitlab.corp.trust.com/cloud-platform/memory-guardian-operator",
                 status: "In Production",
                 toilHoursMonth: 60,
                 freq: "Continuous event-driven daemon",
@@ -1268,13 +1268,13 @@
                 id: "AUTO-105",
                 title: "Nightly Batch Job Stuck Thread Dump Collector",
                 submitter: "Vikram Sen (Lead Prod Support)",
-                submitterEmail: "vikram.sen@truist.com",
+                submitterEmail: "vikram.sen@trust.com",
                 verticalId: "V4",
                 horizontalId: "H4_2",
                 app: "Core Mainframe Settlement Bridge",
                 tech: "Bash",
                 playbookTag: "scripts/batch/thread_dump_collector.sh",
-                gitlabUrl: "https://gitlab.corp.truist.com/batch-support/thread-dump-extractor",
+                gitlabUrl: "https://gitlab.corp.trust.com/batch-support/thread-dump-extractor",
                 status: "In Production",
                 toilHoursMonth: 22,
                 freq: "Daily automated cron",
@@ -1292,13 +1292,13 @@
                 id: "AUTO-106",
                 title: "Disaster Recovery Failover DNS & GSLB Automation",
                 submitter: "Rachel Adams (Sr Staff SRE)",
-                submitterEmail: "rachel.adams@truist.com",
+                submitterEmail: "rachel.adams@trust.com",
                 verticalId: "V2",
                 horizontalId: "H2_1",
                 app: "Commercial Cash Flow Management",
                 tech: "Ansible",
                 playbookTag: "playbooks/dr/f5_gslb_switchover.yml",
-                gitlabUrl: "https://gitlab.corp.truist.com/net-sre/f5-gslb-dr-ansible",
+                gitlabUrl: "https://gitlab.corp.trust.com/net-sre/f5-gslb-dr-ansible",
                 status: "In Production",
                 toilHoursMonth: 16,
                 freq: "On-demand incident response",
@@ -1316,13 +1316,13 @@
                 id: "AUTO-107",
                 title: "Synthetic API Health & Token Refresh Canary",
                 submitter: "Kenji Sato (SRE)",
-                submitterEmail: "kenji.sato@truist.com",
+                submitterEmail: "kenji.sato@trust.com",
                 verticalId: "V1",
                 horizontalId: "H1_4",
                 app: "Credit Card Authorization Gateway",
                 tech: "Python",
                 playbookTag: "canaries/card_auth_probe.py",
-                gitlabUrl: "https://gitlab.corp.truist.com/card-sre/card-auth-canary",
+                gitlabUrl: "https://gitlab.corp.trust.com/card-sre/card-auth-canary",
                 status: "In Production",
                 toilHoursMonth: 30,
                 freq: "Continuous event-driven daemon",
@@ -1338,13 +1338,13 @@
                 id: "AUTO-108",
                 title: "Log Ingestion Spike Throttler & Index Optimizer",
                 submitter: "Siddharth Rao (Observability Eng)",
-                submitterEmail: "siddharth.rao@truist.com",
+                submitterEmail: "siddharth.rao@trust.com",
                 verticalId: "V4",
                 horizontalId: "H4_4",
                 app: "Enterprise Splunk & Elasticsearch Cluster",
                 tech: "Python",
                 playbookTag: "scripts/splunk/spike_throttle.py",
-                gitlabUrl: "https://gitlab.corp.truist.com/observability/splunk-spike-controller",
+                gitlabUrl: "https://gitlab.corp.trust.com/observability/splunk-spike-controller",
                 status: "In Production",
                 toilHoursMonth: 40,
                 freq: "Continuous event-driven daemon",
@@ -1361,13 +1361,13 @@
                 id: "AUTO-109",
                 title: "Automated Blue-Green Database Schema Migrations",
                 submitter: "Elena Rostova (VP SRE)",
-                submitterEmail: "elena.rostova@truist.com",
+                submitterEmail: "elena.rostova@trust.com",
                 verticalId: "V1",
                 horizontalId: "H1_1",
                 app: "Digital Banking Core Database",
                 tech: "Ansible",
                 playbookTag: "playbooks/db/liquidbase_bluegreen.yml",
-                gitlabUrl: "https://gitlab.corp.truist.com/digital-banking/db-bluegreen-migrator",
+                gitlabUrl: "https://gitlab.corp.trust.com/digital-banking/db-bluegreen-migrator",
                 status: "In Development",
                 toilHoursMonth: 36,
                 freq: "Weekly maintenance window",
@@ -1384,13 +1384,13 @@
                 id: "AUTO-110",
                 title: "IAM Role Drift Remediation & Permission Pruner",
                 submitter: "Priya Sharma (Cloud Security SRE)",
-                submitterEmail: "priya.sharma@truist.com",
+                submitterEmail: "priya.sharma@trust.com",
                 verticalId: "V4",
                 horizontalId: "H4_3",
                 app: "AWS & Azure Multi-Cloud Landing Zone",
                 tech: "Terraform",
                 playbookTag: "modules/iam_drift/remediate.tf",
-                gitlabUrl: "https://gitlab.corp.truist.com/cloud-sec/iam-drift-corrector",
+                gitlabUrl: "https://gitlab.corp.trust.com/cloud-sec/iam-drift-corrector",
                 status: "Approved",
                 toilHoursMonth: 25,
                 freq: "Daily automated cron",
@@ -1407,13 +1407,13 @@
                 id: "AUTO-111",
                 title: "Automated MQ Channel Deadlock Clearer",
                 submitter: "Robert Vance (Systems Eng)",
-                submitterEmail: "robert.vance@truist.com",
+                submitterEmail: "robert.vance@trust.com",
                 verticalId: "V4",
                 horizontalId: "H4_2",
                 app: "IBM MQ Mainframe Message Queue",
                 tech: "Bash",
                 playbookTag: "scripts/mq/resolve_channel_hang.sh",
-                gitlabUrl: "https://gitlab.corp.truist.com/core-banking/mq-hang-cleaner",
+                gitlabUrl: "https://gitlab.corp.trust.com/core-banking/mq-hang-cleaner",
                 status: "Approved",
                 toilHoursMonth: 18,
                 freq: "On-demand incident response",
@@ -1429,7 +1429,7 @@
                 id: "AUTO-112",
                 title: "Wealth Portfolio Calculation Cache Auto-Warm Daemon",
                 submitter: "Liam O'Connor (Wealth SRE)",
-                submitterEmail: "liam.oconnor@truist.com",
+                submitterEmail: "liam.oconnor@trust.com",
                 verticalId: "V3",
                 horizontalId: "H3_1",
                 app: "Wealth Advisory Portfolio Calculation Engine",
@@ -1451,7 +1451,7 @@
                 id: "AUTO-113",
                 title: "Automated Commercial Loan Document OCR Queue Flusher",
                 submitter: "Carlos Gomez (Prod Support Lead)",
-                submitterEmail: "carlos.gomez@truist.com",
+                submitterEmail: "carlos.gomez@trust.com",
                 verticalId: "V2",
                 horizontalId: "H2_2",
                 app: "Commercial Underwriting Document Ingestion",
@@ -1473,7 +1473,7 @@
                 id: "AUTO-114",
                 title: "Branch Teller Terminal Health Auto-Rebooter",
                 submitter: "Anand Patel (Branch Tech Eng)",
-                submitterEmail: "anand.patel@truist.com",
+                submitterEmail: "anand.patel@trust.com",
                 verticalId: "V1",
                 horizontalId: "H1_2",
                 app: "Branch Teller Workstation Software",
@@ -1496,13 +1496,13 @@
                 id: "AUTO-115",
                 title: "Legacy Windows Server 2012 Auto-Patcher",
                 submitter: "Johnathan Miller (Sysadmin)",
-                submitterEmail: "j.miller@truist.com",
+                submitterEmail: "j.miller@trust.com",
                 verticalId: "V2",
                 horizontalId: "H2_3",
                 app: "Legacy FX Settlement Server",
                 tech: "PowerShell",
                 playbookTag: "",
-                gitlabUrl: "https://gitlab.corp.truist.com/legacy-ops/patch-win2012",
+                gitlabUrl: "https://gitlab.corp.trust.com/legacy-ops/patch-win2012",
                 status: "Rejected",
                 toilHoursMonth: 12,
                 freq: "Monthly maintenance window",
@@ -1518,7 +1518,7 @@
                 id: "AUTO-116",
                 title: "Automated Slack-to-Email Incident Notifier",
                 submitter: "Sarah Jenkins (Support Analyst)",
-                submitterEmail: "sarah.jenkins@truist.com",
+                submitterEmail: "sarah.jenkins@trust.com",
                 verticalId: "V1",
                 horizontalId: "H1_3",
                 app: "Mortgage Incident Channel",
@@ -1563,15 +1563,15 @@
             document.getElementById("btnViewBoard").addEventListener("click", function () {
                 document.getElementById("boardViewContainer").classList.remove("hidden");
                 document.getElementById("tableViewContainer").classList.add("hidden");
-                this.className = "px-2 py-1 text-xs rounded font-medium bg-truist-purple text-white shadow-xs";
-                document.getElementById("btnViewTable").className = "px-2 py-1 text-xs rounded font-medium text-truist-muted hover:text-truist-purple";
+                this.className = "px-2 py-1 text-xs rounded font-medium bg-trust-purple text-white shadow-xs";
+                document.getElementById("btnViewTable").className = "px-2 py-1 text-xs rounded font-medium text-trust-muted hover:text-trust-purple";
             });
 
             document.getElementById("btnViewTable").addEventListener("click", function () {
                 document.getElementById("boardViewContainer").classList.add("hidden");
                 document.getElementById("tableViewContainer").classList.remove("hidden");
-                this.className = "px-2 py-1 text-xs rounded font-medium bg-truist-purple text-white shadow-xs";
-                document.getElementById("btnViewBoard").className = "px-2 py-1 text-xs rounded font-medium text-truist-muted hover:text-truist-purple";
+                this.className = "px-2 py-1 text-xs rounded font-medium bg-trust-purple text-white shadow-xs";
+                document.getElementById("btnViewBoard").className = "px-2 py-1 text-xs rounded font-medium text-trust-muted hover:text-trust-purple";
                 renderFunnelTable();
             });
 
@@ -1664,7 +1664,7 @@
         function switchTab(tabId) {
             document.querySelectorAll(".tab-btn").forEach(btn => {
                 if (btn.getAttribute("data-tab") === tabId) {
-                    btn.className = "tab-btn active px-3 py-2 text-xs font-medium border-b-2 border-truist-teal text-white flex items-center space-x-1.5 whitespace-nowrap";
+                    btn.className = "tab-btn active px-3 py-2 text-xs font-medium border-b-2 border-trust-teal text-white flex items-center space-x-1.5 whitespace-nowrap";
                 } else {
                     btn.className = "tab-btn px-3 py-2 text-xs font-medium border-b-2 border-transparent text-gray-300 hover:text-white hover:border-gray-300 flex items-center space-x-1.5 whitespace-nowrap";
                 }
@@ -1787,7 +1787,7 @@
                 if (!colEl) return;
 
                 const card = document.createElement("div");
-                card.className = "bg-white p-3 rounded-lg border border-truist-border shadow-xs hover:shadow-md transition-shadow cursor-pointer relative group";
+                card.className = "bg-white p-3 rounded-lg border border-trust-border shadow-xs hover:shadow-md transition-shadow cursor-pointer relative group";
                 card.onclick = () => openIdeaDetail(item.id);
 
                 const vData = ORG_HIERARCHY[item.verticalId] || { code: "ORG" };
@@ -1806,19 +1806,19 @@
                 // Latest meeting note snippet
                 const latestNote = item.meetingNotes && item.meetingNotes.length > 0 ? item.meetingNotes[item.meetingNotes.length - 1] : null;
                 const meetingSnippet = latestNote ? `
-         <div class="mt-2 pt-2 border-t border-gray-100 text-[10px] text-truist-muted flex items-start space-x-1">
-           <span class="text-truist-teal font-semibold">${latestNote.date}:</span>
+         <div class="mt-2 pt-2 border-t border-gray-100 text-[10px] text-trust-muted flex items-start space-x-1">
+           <span class="text-trust-teal font-semibold">${latestNote.date}:</span>
            <span class="truncate">${latestNote.text}</span>
          </div>
        ` : "";
 
                 card.innerHTML = `
          <div class="flex items-center justify-between mb-1.5">
-           <span class="text-[10px] font-mono font-bold text-truist-purple">${item.id}</span>
+           <span class="text-[10px] font-mono font-bold text-trust-purple">${item.id}</span>
            <span class="text-[9px] font-bold px-1.5 py-0.5 rounded ${badgeClass}">${item.status}</span>
          </div>
-         <h4 class="text-xs font-bold text-truist-purple leading-tight group-hover:text-truist-teal transition-colors line-clamp-2">${item.title}</h4>
-         <div class="text-[11px] text-truist-muted mt-1 truncate">App: <strong class="text-gray-800">${item.app}</strong></div>
+         <h4 class="text-xs font-bold text-trust-purple leading-tight group-hover:text-trust-teal transition-colors line-clamp-2">${item.title}</h4>
+         <div class="text-[11px] text-trust-muted mt-1 truncate">App: <strong class="text-gray-800">${item.app}</strong></div>
          <div class="flex items-center justify-between text-[10px] text-gray-500 mt-2">
            <span class="bg-gray-100 px-1.5 py-0.5 rounded font-medium">${vData.code} · ${item.tech}</span>
            <span class="font-semibold text-amber-700">${item.toilHoursMonth} hrs/mo</span>
@@ -1847,7 +1847,7 @@
             tbody.innerHTML = "";
 
             if (filtered.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-xs text-truist-muted">No automation ideas match current filter criteria.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center py-6 text-xs text-trust-muted">No automation ideas match current filter criteria.</td></tr>`;
                 return;
             }
 
@@ -1863,20 +1863,20 @@
                 if (item.status === "Rejected") badgeClass = "badge-rejected";
 
                 const latestNote = item.meetingNotes && item.meetingNotes.length > 0 ? item.meetingNotes[item.meetingNotes.length - 1] : null;
-                const noteText = latestNote ? `<span class="font-semibold text-truist-teal">${latestNote.date}:</span> ${latestNote.text}` : `<span class="text-gray-400">No notes yet</span>`;
+                const noteText = latestNote ? `<span class="font-semibold text-trust-teal">${latestNote.date}:</span> ${latestNote.text}` : `<span class="text-gray-400">No notes yet</span>`;
 
                 const tr = document.createElement("tr");
-                tr.className = "hover:bg-truist-lavender/30 cursor-pointer";
+                tr.className = "hover:bg-trust-lavender/30 cursor-pointer";
                 tr.onclick = () => openIdeaDetail(item.id);
 
                 tr.innerHTML = `
-         <td class="px-3 py-2.5 font-medium text-truist-purple">
-           <span class="font-mono text-[10px] text-truist-muted block">${item.id}</span>
+         <td class="px-3 py-2.5 font-medium text-trust-purple">
+           <span class="font-mono text-[10px] text-trust-muted block">${item.id}</span>
            <div class="font-bold max-w-xs truncate">${item.title}</div>
          </td>
          <td class="px-3 py-2.5">
            <div class="font-medium text-gray-800">${vData.name}</div>
-           <div class="text-[10px] text-truist-muted">${hName}</div>
+           <div class="text-[10px] text-trust-muted">${hName}</div>
          </td>
          <td class="px-3 py-2.5 font-medium text-gray-800">${item.app}</td>
          <td class="px-3 py-2.5">
@@ -1888,7 +1888,7 @@
          </td>
          <td class="px-3 py-2.5 max-w-xs truncate text-[11px] text-gray-600">${noteText}</td>
          <td class="px-3 py-2.5 text-center">
-           <button class="px-2 py-1 bg-truist-purple text-white text-[10px] font-semibold rounded hover:bg-truist-vibrant">
+           <button class="px-2 py-1 bg-trust-purple text-white text-[10px] font-semibold rounded hover:bg-trust-vibrant">
              View
            </button>
          </td>
@@ -1920,14 +1920,14 @@
             });
 
             if (filtered.length === 0) {
-                grid.innerHTML = `<div class="col-span-3 text-center py-8 text-xs text-truist-muted">No production automations matched the catalog filter.</div>`;
+                grid.innerHTML = `<div class="col-span-3 text-center py-8 text-xs text-trust-muted">No production automations matched the catalog filter.</div>`;
                 return;
             }
 
             filtered.forEach(item => {
                 const vData = ORG_HIERARCHY[item.verticalId] || { name: item.verticalId };
                 const card = document.createElement("div");
-                card.className = "bg-white rounded-lg border border-truist-border shadow-sm p-4 flex flex-col justify-between hover:border-truist-teal transition-all";
+                card.className = "bg-white rounded-lg border border-trust-border shadow-sm p-4 flex flex-col justify-between hover:border-trust-teal transition-all";
 
                 const adoptionsBadge = item.adoptions && item.adoptions.length > 0
                     ? `<span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Reused across ${item.adoptions.length} other apps</span>`
@@ -1936,29 +1936,29 @@
                 card.innerHTML = `
          <div>
            <div class="flex items-center justify-between mb-2">
-             <span class="text-[10px] font-mono font-bold bg-truist-lavender text-truist-purple px-1.5 py-0.5 rounded">${item.id}</span>
+             <span class="text-[10px] font-mono font-bold bg-trust-lavender text-trust-purple px-1.5 py-0.5 rounded">${item.id}</span>
              ${adoptionsBadge}
            </div>
-           <h3 class="text-xs font-bold text-truist-purple leading-snug mb-1">${item.title}</h3>
-           <p class="text-[11px] text-truist-muted mb-2 line-clamp-2">${item.desc}</p>
+           <h3 class="text-xs font-bold text-trust-purple leading-snug mb-1">${item.title}</h3>
+           <p class="text-[11px] text-trust-muted mb-2 line-clamp-2">${item.desc}</p>
 
            <div class="bg-gray-50 p-2 rounded border border-gray-100 text-[10px] space-y-1 mb-3">
              <div><strong class="text-gray-700">Origin App:</strong> ${item.app} (${vData.name})</div>
-             <div><strong class="text-gray-700">Tech & Playbook:</strong> <span class="font-mono text-truist-teal">${item.tech} · ${item.playbookTag || 'N/A'}</span></div>
+             <div><strong class="text-gray-700">Tech & Playbook:</strong> <span class="font-mono text-trust-teal">${item.tech} · ${item.playbookTag || 'N/A'}</span></div>
              <div><strong class="text-gray-700">Annual Hours Saved:</strong> <span class="text-emerald-700 font-bold">${item.toilHoursMonth * 12} hrs/yr</span></div>
            </div>
          </div>
 
-         <div class="pt-3 border-t border-truist-border flex items-center justify-between gap-2">
+         <div class="pt-3 border-t border-trust-border flex items-center justify-between gap-2">
            <a href="${item.gitlabUrl}" target="_blank" class="inline-flex items-center text-xs text-orange-600 font-semibold hover:underline">
              <svg class="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M22.65 14.39L12 22.13 1.35 14.39a.84.84 0 01-.3-.94l1.22-3.78 2.44-7.51A.42.42 0 014.82 2a.43.43 0 01.58 0 .42.42 0 01.11.18l2.44 7.49h8.1l2.44-7.49a.42.42 0 01.11-.18.43.43 0 01.58 0 .42.42 0 01.11.16l2.44 7.51 1.22 3.78a.84.84 0 01-.3.94z"/></svg>
              GitLab Repo ↗
            </a>
            <div class="flex items-center space-x-1.5">
-             <button onclick="openIdeaDetail('${item.id}')" class="px-2 py-1 text-[11px] font-semibold border border-truist-border rounded text-truist-purple hover:bg-truist-lavender">
+             <button onclick="openIdeaDetail('${item.id}')" class="px-2 py-1 text-[11px] font-semibold border border-trust-border rounded text-trust-purple hover:bg-trust-lavender">
                Details & Notes
              </button>
-             <button onclick="openMigrationModal('${item.id}')" class="px-2 py-1 text-[11px] font-semibold bg-truist-teal text-white rounded hover:bg-truist-tealdark shadow-xs">
+             <button onclick="openMigrationModal('${item.id}')" class="px-2 py-1 text-[11px] font-semibold bg-trust-teal text-white rounded hover:bg-trust-tealdark shadow-xs">
                Request Migration
              </button>
            </div>
@@ -2001,12 +2001,12 @@
 
                 tr.innerHTML = `
          <td class="px-3 py-3">
-           <div class="font-bold text-truist-purple">${item.title}</div>
-           <div class="font-mono text-[10px] text-truist-muted">${item.id} · ${item.tech}</div>
+           <div class="font-bold text-trust-purple">${item.title}</div>
+           <div class="font-mono text-[10px] text-trust-muted">${item.id} · ${item.tech}</div>
          </td>
          <td class="px-3 py-3">
            <div class="font-semibold text-gray-800">${item.app}</div>
-           <div class="text-[10px] text-truist-muted">${vData.name} &gt; ${originH}</div>
+           <div class="text-[10px] text-trust-muted">${vData.name} &gt; ${originH}</div>
          </td>
          <td class="px-3 py-3 max-w-sm">
            <div class="flex flex-wrap items-center">
@@ -2014,7 +2014,7 @@
            </div>
          </td>
          <td class="px-3 py-3 text-center whitespace-nowrap">
-           <button onclick="openMigrationModal('${item.id}')" class="px-2.5 py-1 text-xs font-semibold bg-truist-teal text-white rounded hover:bg-truist-tealdark shadow-xs">
+           <button onclick="openMigrationModal('${item.id}')" class="px-2.5 py-1 text-xs font-semibold bg-trust-teal text-white rounded hover:bg-trust-tealdark shadow-xs">
              + Migrate to My App
            </button>
          </td>
@@ -2054,7 +2054,7 @@
             allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             if (allNotes.length === 0) {
-                container.innerHTML = `<div class="text-center py-6 text-xs text-truist-muted">No meeting discussions recorded for this selection.</div>`;
+                container.innerHTML = `<div class="text-center py-6 text-xs text-trust-muted">No meeting discussions recorded for this selection.</div>`;
                 return;
             }
 
@@ -2065,23 +2065,23 @@
 
                 entry.innerHTML = `
          <!-- Dot -->
-         <div class="absolute left-2 top-1.5 w-3 h-3 rounded-full bg-truist-teal border-2 border-white shadow-sm"></div>
+         <div class="absolute left-2 top-1.5 w-3 h-3 rounded-full bg-trust-teal border-2 border-white shadow-sm"></div>
 
-         <div class="bg-gray-50 border border-truist-border rounded-lg p-3 hover:bg-truist-lavender/40 transition-colors">
+         <div class="bg-gray-50 border border-trust-border rounded-lg p-3 hover:bg-trust-lavender/40 transition-colors">
            <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs mb-1">
              <div class="flex items-center space-x-2">
-               <span class="font-bold text-truist-purple">${n.date}</span>
-               <span class="bg-truist-lavender text-truist-purple px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold">${n.ideaId}</span>
+               <span class="font-bold text-trust-purple">${n.date}</span>
+               <span class="bg-trust-lavender text-trust-purple px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold">${n.ideaId}</span>
                <span class="font-bold text-gray-800">${n.ideaTitle}</span>
              </div>
-             <span class="text-[10px] text-truist-muted font-medium mt-1 sm:mt-0">Reviewer: <strong class="text-truist-purple">${n.author}</strong></span>
+             <span class="text-[10px] text-trust-muted font-medium mt-1 sm:mt-0">Reviewer: <strong class="text-trust-purple">${n.author}</strong></span>
            </div>
            <p class="text-xs text-gray-700 mt-1 leading-relaxed bg-white p-2 rounded border border-gray-200">
              ${n.text}
            </p>
-           <div class="mt-2 flex items-center justify-between text-[10px] text-truist-muted">
+           <div class="mt-2 flex items-center justify-between text-[10px] text-trust-muted">
              <span>Vertical: ${vData.code}</span>
-             <button onclick="openIdeaDetail('${n.ideaId}')" class="text-truist-teal font-semibold hover:underline">
+             <button onclick="openIdeaDetail('${n.ideaId}')" class="text-trust-teal font-semibold hover:underline">
                View Full Idea Record & Workflow ↗
              </button>
            </div>
@@ -2170,29 +2170,29 @@
 
             appRecords.forEach(rec => {
                 const tr = document.createElement("tr");
-                tr.className = "hover:bg-truist-lavender/30";
+                tr.className = "hover:bg-trust-lavender/30";
 
                 const tag = rec.isOrigin
                     ? `<span class="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Origin Script</span>`
                     : `<span class="bg-purple-100 text-purple-800 text-[9px] font-bold px-1.5 py-0.5 rounded">Migrated Blueprint</span>`;
 
                 tr.innerHTML = `
-         <td class="px-3 py-2.5 font-bold text-truist-purple">
+         <td class="px-3 py-2.5 font-bold text-trust-purple">
            ${rec.app}
            <div class="mt-0.5">${tag}</div>
          </td>
          <td class="px-3 py-2.5">
            <div class="font-medium text-gray-800">${rec.verticalName}</div>
-           <div class="text-[10px] text-truist-muted">${rec.horizName}</div>
+           <div class="text-[10px] text-trust-muted">${rec.horizName}</div>
          </td>
          <td class="px-3 py-2.5 max-w-xs truncate text-gray-800 font-medium">${rec.title}</td>
-         <td class="px-3 py-2.5 font-mono text-[11px] text-truist-teal">
+         <td class="px-3 py-2.5 font-mono text-[11px] text-trust-teal">
            <a href="${rec.gitlabUrl}" target="_blank" class="hover:underline">${rec.tech} ↗</a>
          </td>
          <td class="px-3 py-2.5 text-right font-semibold text-gray-700">${rec.monthlyHrs} hrs</td>
          <td class="px-3 py-2.5 text-right font-bold text-emerald-700">${rec.annualHrs.toLocaleString()} hrs</td>
-         <td class="px-3 py-2.5 text-right font-bold text-truist-purple">$${rec.annualCost.toLocaleString()}</td>
-         <td class="px-3 py-2.5 text-center text-truist-muted">
+         <td class="px-3 py-2.5 text-right font-bold text-trust-purple">$${rec.annualCost.toLocaleString()}</td>
+         <td class="px-3 py-2.5 text-center text-trust-muted">
            ${rec.reusedAcross > 0 ? `<span class="font-bold text-purple-700">${rec.reusedAcross} teams</span>` : '-'}
          </td>
        `;
@@ -2312,7 +2312,7 @@
             const link = document.createElement("a");
             const url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
-            link.setAttribute("download", `Truist_SRE_Productivity_Report_${new Date().getFullYear()}.csv`);
+            link.setAttribute("download", `trust_SRE_Productivity_Report_${new Date().getFullYear()}.csv`);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -2328,31 +2328,31 @@
             Object.keys(ORG_HIERARCHY).forEach(key => {
                 const v = ORG_HIERARCHY[key];
                 const card = document.createElement("div");
-                card.className = "bg-white rounded-lg border border-truist-border p-4 shadow-sm";
+                card.className = "bg-white rounded-lg border border-trust-border p-4 shadow-sm";
 
                 const horizList = v.horizontals.map(h => `
          <div class="flex items-center justify-between p-2 bg-gray-50 rounded border border-gray-100 text-xs">
            <div>
-             <span class="font-bold text-truist-purple">${h.name}</span>
-             <span class="text-[10px] text-truist-muted block">Queue Lead: ${h.lead}</span>
+             <span class="font-bold text-trust-purple">${h.name}</span>
+             <span class="text-[10px] text-trust-muted block">Queue Lead: ${h.lead}</span>
            </div>
-           <span class="text-[10px] bg-truist-lavender text-truist-purple font-semibold px-2 py-0.5 rounded">Active Queue</span>
+           <span class="text-[10px] bg-trust-lavender text-trust-purple font-semibold px-2 py-0.5 rounded">Active Queue</span>
          </div>
        `).join("");
 
                 card.innerHTML = `
-         <div class="flex items-center justify-between border-b border-truist-border pb-2.5 mb-3">
+         <div class="flex items-center justify-between border-b border-trust-border pb-2.5 mb-3">
            <div>
-             <span class="text-[10px] uppercase font-bold text-truist-teal tracking-wider">${v.code}</span>
-             <h3 class="text-sm font-bold text-truist-purple">${v.name}</h3>
-             <p class="text-[11px] text-truist-muted">SRE Executive: ${v.lead}</p>
+             <span class="text-[10px] uppercase font-bold text-trust-teal tracking-wider">${v.code}</span>
+             <h3 class="text-sm font-bold text-trust-purple">${v.name}</h3>
+             <p class="text-[11px] text-trust-muted">SRE Executive: ${v.lead}</p>
            </div>
-           <span class="bg-truist-purple text-white text-[10px] font-bold px-2 py-1 rounded">
+           <span class="bg-trust-purple text-white text-[10px] font-bold px-2 py-1 rounded">
              ${v.horizontals.length} Horizontals
            </span>
          </div>
          <div class="space-y-2">
-           <h4 class="text-[11px] font-bold text-truist-muted uppercase tracking-wider">Configured Horizontal Queues:</h4>
+           <h4 class="text-[11px] font-bold text-trust-muted uppercase tracking-wider">Configured Horizontal Queues:</h4>
            ${horizList}
          </div>
        `;
@@ -2526,12 +2526,12 @@
                <strong class="text-purple-950">${ad.app}</strong>
                <span class="text-gray-500 text-[10px]">(${adV.name})</span>
              </div>
-             <span class="text-truist-muted text-[10px]">Configured: ${ad.date}</span>
+             <span class="text-trust-muted text-[10px]">Configured: ${ad.date}</span>
            </div>
          `;
                 }).join("");
             } else {
-                cpList.innerHTML = `<span class="italic text-truist-muted text-[11px]">No external teams have configured this script yet. Eligible for cross-pollination.</span>`;
+                cpList.innerHTML = `<span class="italic text-trust-muted text-[11px]">No external teams have configured this script yet. Eligible for cross-pollination.</span>`;
             }
 
             // Render meeting notes
@@ -2551,7 +2551,7 @@
             container.innerHTML = "";
 
             if (!item.meetingNotes || item.meetingNotes.length === 0) {
-                container.innerHTML = `<div class="text-truist-muted text-xs italic py-2">No meeting notes recorded yet for this idea.</div>`;
+                container.innerHTML = `<div class="text-trust-muted text-xs italic py-2">No meeting notes recorded yet for this idea.</div>`;
                 return;
             }
 
@@ -2560,8 +2560,8 @@
                 noteEl.className = "bg-gray-50 border border-gray-200 rounded p-2.5 text-xs";
                 noteEl.innerHTML = `
          <div class="flex items-center justify-between text-[11px] mb-1">
-           <span class="font-bold text-truist-purple">${n.date}</span>
-           <span class="text-truist-muted font-medium">${n.author}</span>
+           <span class="font-bold text-trust-purple">${n.date}</span>
+           <span class="text-trust-muted font-medium">${n.author}</span>
          </div>
          <p class="text-gray-700 leading-normal">${n.text}</p>
        `;
@@ -2717,7 +2717,7 @@
                 id: newMigId,
                 title: `[Cross-Pollination] Adapt ${sourceItem.title} for ${targetApp}`,
                 submitter: requestor,
-                submitterEmail: `${requestor.toLowerCase().replace(/\s+/g, '.')}@truist.com`,
+                submitterEmail: `${requestor.toLowerCase().replace(/\s+/g, '.')}@trust.com`,
                 verticalId: targetV,
                 horizontalId: targetH,
                 app: targetApp,
